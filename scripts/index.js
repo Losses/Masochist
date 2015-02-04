@@ -129,6 +129,8 @@ var losses = {
                 losses._CACHE_.failedTimeoutEvent = false;
             }
 
+            $('.icon-spin2').remove();
+
             losses._ELEMENTS_.header.append('<i class="icon-cancel"></i>');
 
             losses._CACHE_.failedTimeoutEvent = setTimeout(function () {
