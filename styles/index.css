@@ -1,0 +1,96 @@
+@import url(im.css);
+html,
+body {
+  height: 100%;
+}
+header {
+  min-height: 500px;
+  position: relative;
+}
+header .logo {
+  width: 500px;
+  height: 500px;
+  right: 100px;
+  bottom: 0;
+  background-image: url('../images/title.png');
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: 700px;
+  display: block;
+  position: absolute;
+}
+header #intro {
+  top: 50%;
+  width: 40%;
+  height: 158px;
+  text-align: center;
+  margin: -79px 0 0 50px;
+  position: absolute;
+}
+header #intro h1 {
+  font-size: 40px;
+  line-height: 60px;
+}
+header #intro .subtitle {
+  font-size: 15px;
+  line-height: 40px;
+}
+header #intro .button_group {
+  width: 200px;
+  margin: 15px auto;
+  border: 1px white solid;
+  border-radius: 3px;
+  font-size: 12px;
+}
+header #intro .button_group a {
+  width: 76px;
+  padding: 12px;
+  float: left;
+  display: block;
+}
+header #intro .button_group a:link,
+header #intro .button_group a:visited {
+  color: white;
+  text-decoration: none;
+  transition: all ease-in 0.3s;
+}
+header #intro .button_group a:hover {
+  color: #4e06e1;
+  background: white;
+  transition: all ease-in 0.3s;
+}
+#main .spec {
+  margin: 50px;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+}
+#main .spec li {
+  max-width: 200px;
+  flex: 1;
+  text-align: center;
+  position: relative;
+}
+#main .spec li::before {
+  left: 50%;
+  font-size: 90px;
+  color: #5f25ee;
+  margin-left: -45px;
+  display: block;
+  position: absolute;
+}
+#main .spec li p {
+  margin-top: 5px;
+  font-size: 14px;
+  line-height: 25px;
+  color: #301d5f;
+}
+#main .spec li .title {
+  font-size: 30px;
+  line-height: 50px;
+  color: #1a0b3d;
+  margin-top: 90px;
+}
+footer {
+  flex: 0;
+}

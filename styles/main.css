@@ -1,0 +1,147 @@
+@import url(fontello.css);
+@import url(webfont.css);
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: 'Source Sans Pro', 'Microsoft JhengHei', 'Microsoft Yahei', sans-serif;
+}
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+.clear::after {
+  width: 0;
+  height: 0;
+  content: "\feff";
+  display: block;
+  clear: both;
+}
+header {
+  background: -moz-linear-gradient(90deg, #5c00ff, #410cc7);
+  background: -webkit-gradient(linear, 0 50%, 100% 50%, from(#5c00ff), to(#410cc7));
+  background: -webkit-linear-gradient(90deg, #5c00ff, #410cc7);
+  color: white;
+}
+header nav {
+  background: #3e00a4;
+  margin-top: 20px;
+  margin-right: -40px;
+  padding-right: 60px;
+  float: right;
+  transform: skew(-22.5deg);
+}
+header nav * {
+  transform: skew(22.5deg);
+}
+header nav li {
+  padding: 20px 20px 20px 40px;
+  float: left;
+  transition: all 0.3s ease-in-out;
+}
+header nav li a:link {
+  color: white;
+  text-decoration: none;
+}
+header nav li a:visited {
+  color: white;
+}
+header nav .highlight {
+  width: 85px;
+  height: 62px;
+  right: -90px;
+  margin-left: 15px;
+  background: #fdd000;
+  transform: skew(0deg);
+  display: block;
+  position: absolute;
+  transition: all 0.3s ease-in-out;
+  -moz-transition: all ease-in-out 0.3s;
+}
+header nav .high a:link,
+header nav .high a:hover,
+header nav .high a:visited {
+  color: black !important;
+  transition: all 0.3s ease-in-out;
+  -moz-transition: all ease-in-out 0.3s;
+}
+header nav::after {
+  width: 0;
+  height: 0;
+  content: "\feff";
+  display: block;
+  clear: both;
+}
+header #user_info {
+  width: 600px;
+  padding: 40px 30px;
+}
+header #user_info .face {
+  border: white 8px solid;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+header #user_info .name_panel {
+  margin: 29px 0 10px 0;
+}
+header #user_info .name_panel .name {
+  font-size: 30px;
+  margin: 0 10px 10px 10px;
+}
+header #user_info .name_panel .user_type {
+  color: #ffae00;
+}
+header #user_info .user_detail {
+  margin: 0 0 0 20px;
+}
+header #user_info .user_detail .icon-chart-pie::after {
+  content: 'Mb';
+}
+header #user_info .user_detail .icon-money::after {
+  content: '元';
+}
+.button {
+  top: -2px;
+  border: 1px white solid;
+  border-radius: 3px;
+  font-size: 11px;
+  margin: 0 0 0 10px;
+  padding: 2px 6px;
+  position: relative;
+}
+.button:hover {
+  background: white;
+}
+.button:hover:link,
+.button:hover:visited,
+.button:hover:active {
+  color: #5105e9;
+}
+.button:link,
+.button:visited,
+.button:active {
+  text-decoration: none;
+  color: white;
+}
+footer {
+  font-size: 12px;
+  line-height: 20px;
+  background: #c0b5d3;
+  padding: 20px 30px;
+  color: #3c324d;
+}
+footer a:link,
+footer a:visited {
+  color: #2c184f;
+  text-decoration: none;
+  border-bottom: 1px dashed #20113c;
+}
+footer a:hover {
+  color: #3c324d;
+}
