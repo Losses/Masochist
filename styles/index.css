@@ -21,43 +21,7 @@ header .logo {
 }
 header #intro {
   top: 50%;
-  width: 40%;
-  height: 158px;
-  text-align: center;
   margin: -79px 0 0 50px;
-  position: absolute;
-}
-header #intro h1 {
-  font-size: 40px;
-  line-height: 60px;
-}
-header #intro .subtitle {
-  font-size: 15px;
-  line-height: 40px;
-}
-header #intro .button_group {
-  width: 200px;
-  margin: 15px auto;
-  border: 1px white solid;
-  border-radius: 3px;
-  font-size: 12px;
-}
-header #intro .button_group a {
-  width: 76px;
-  padding: 12px;
-  float: left;
-  display: block;
-}
-header #intro .button_group a:link,
-header #intro .button_group a:visited {
-  color: white;
-  text-decoration: none;
-  transition: all ease-in 0.3s;
-}
-header #intro .button_group a:hover {
-  color: #4e06e1;
-  background: white;
-  transition: all ease-in 0.3s;
 }
 #main .spec {
   margin: 50px;
