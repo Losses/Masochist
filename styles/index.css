@@ -21,7 +21,7 @@
 }
 @keyframes flow_up_l {
   from {
-    margin-top: 0px;
+    margin-top: 0;
     opacity: 0;
   }
   to {
@@ -41,7 +41,7 @@
 }
 @keyframes flow_up_r {
   from {
-    margin-top: 0px;
+    margin-top: 0;
     opacity: 0;
   }
   to {
@@ -50,6 +50,67 @@
   }
 }
 @keyframes flow_down_r {
+  from {
+    margin-top: -171px;
+    opacity: 1;
+  }
+  to {
+    margin-top: 0px;
+    opacity: 0;
+  }
+}
+/*shit webkit*/
+@-webkit-keyframes flow_up {
+  from {
+    margin-top: -79px;
+    opacity: 1;
+  }
+  to {
+    margin-top: -200px;
+    opacity: 0;
+  }
+}
+@-webkit-keyframes flow_down {
+  from {
+    margin-top: -200px;
+    opacity: 0;
+  }
+  to {
+    margin-top: -79px;
+    opacity: 1;
+  }
+}
+@-webkit-keyframes flow_up_l {
+  from {
+    margin-top: 0;
+    opacity: 0;
+  }
+  to {
+    margin-top: -111px;
+    opacity: 1;
+  }
+}
+@-webkit-keyframes flow_down_l {
+  from {
+    margin-top: -111px;
+    opacity: 1;
+  }
+  to {
+    margin-top: 0px;
+    opacity: 0;
+  }
+}
+@-webkit-keyframes flow_up_r {
+  from {
+    margin-top: 0;
+    opacity: 0;
+  }
+  to {
+    margin-top: -171px;
+    opacity: 1;
+  }
+}
+@-webkit-keyframes flow_down_r {
   from {
     margin-top: -171px;
     opacity: 1;
@@ -84,10 +145,12 @@ header #intro {
   margin: -79px 0 0 50px;
 }
 header #intro.flow_up {
-  animation: flow_up 600ms ease-in-out;
+  -webkit-animation: flow_up 610ms ease-in-out;
+  animation: flow_up 605ms ease-in-out;
 }
 header #intro.flow_down {
-  animation: flow_down 600ms ease-in-out;
+  -webkit-animation: flow_down 610ms ease-in-out;
+  animation: flow_down 605ms ease-in-out;
 }
 header #intro .button_group {
   width: 200px;
@@ -130,10 +193,12 @@ header #login_form {
   display: none;
 }
 header #login_form.flow_up {
-  animation: flow_up_l 600ms ease-in-out;
+  -webkit-animation: flow_up_l 610ms ease-in-out;
+  animation: flow_up_l 605ms ease-in-out;
 }
 header #login_form.flow_down {
-  animation: flow_down_l 600ms ease-in-out;
+  -webkit-animation: flow_down_l 610ms ease-in-out;
+  animation: flow_down_l 605ms ease-in-out;
 }
 header #register_form {
   margin-top: -171px;
@@ -141,10 +206,12 @@ header #register_form {
   display: none;
 }
 header #register_form.flow_up {
-  animation: flow_up_r 600ms ease-in-out;
+  -webkit-animation: flow_up_r 610ms ease-in-out;
+  animation: flow_up_r 605ms ease-in-out;
 }
 header #register_form.flow_down {
-  animation: flow_down_r 600ms ease-in-out;
+  -webkit-animation: flow_down_r 610ms ease-in-out;
+  animation: flow_down_r 605ms ease-in-out;
 }
 header #register_form .info {
   font-size: 10px;
