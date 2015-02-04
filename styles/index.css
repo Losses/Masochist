@@ -1,4 +1,64 @@
 @import url(im.css);
+@keyframes flow_up {
+  from {
+    margin-top: -79px;
+    opacity: 1;
+  }
+  to {
+    margin-top: -200px;
+    opacity: 0;
+  }
+}
+@keyframes flow_down {
+  from {
+    margin-top: -200px;
+    opacity: 0;
+  }
+  to {
+    margin-top: -79px;
+    opacity: 1;
+  }
+}
+@keyframes flow_up_l {
+  from {
+    margin-top: 0px;
+    opacity: 0;
+  }
+  to {
+    margin-top: -111px;
+    opacity: 1;
+  }
+}
+@keyframes flow_down_l {
+  from {
+    margin-top: -111px;
+    opacity: 1;
+  }
+  to {
+    margin-top: 0px;
+    opacity: 0;
+  }
+}
+@keyframes flow_up_r {
+  from {
+    margin-top: 0px;
+    opacity: 0;
+  }
+  to {
+    margin-top: -171px;
+    opacity: 1;
+  }
+}
+@keyframes flow_down_r {
+  from {
+    margin-top: -171px;
+    opacity: 1;
+  }
+  to {
+    margin-top: 0px;
+    opacity: 0;
+  }
+}
 html,
 body {
   height: 100%;
@@ -22,6 +82,201 @@ header .logo {
 header #intro {
   top: 50%;
   margin: -79px 0 0 50px;
+}
+header #intro.flow_up {
+  animation: flow_up 600ms ease-in-out;
+}
+header #intro.flow_down {
+  animation: flow_down 600ms ease-in-out;
+}
+header #intro .button_group {
+  width: 200px;
+  margin: 15px auto;
+  border: 1px white solid;
+  border-radius: 3px;
+  font-size: 12px;
+}
+header #intro .button_group a {
+  width: 76px;
+  padding: 12px;
+  float: left;
+  display: block;
+}
+header #intro .button_group a,
+header #intro .button_group a:link,
+header #intro .button_group a:visited {
+  text-decoration: none;
+  border: none;
+  transition: all ease-in 0.3s;
+}
+header #intro .button_group a:hover {
+  color: #4e06e1;
+  background: white;
+  transition: all ease-in 0.3s;
+}
+header .index_form {
+  top: 50%;
+  left: 200px;
+  width: 230px;
+  position: absolute;
+}
+header .index_form h2 {
+  line-height: 3em;
+  text-align: center;
+}
+header #login_form {
+  margin-top: -111px;
+  height: 222px;
+  display: none;
+}
+header #login_form.flow_up {
+  animation: flow_up_l 600ms ease-in-out;
+}
+header #login_form.flow_down {
+  animation: flow_down_l 600ms ease-in-out;
+}
+header #register_form {
+  margin-top: -171px;
+  height: 342px;
+  display: none;
+}
+header #register_form.flow_up {
+  animation: flow_up_r 600ms ease-in-out;
+}
+header #register_form.flow_down {
+  animation: flow_down_r 600ms ease-in-out;
+}
+header #register_form .info {
+  font-size: 10px;
+  line-height: 3em;
+}
+header #register_form button {
+  margin-top: 10px;
+}
+header form {
+  font-size: 13px;
+}
+header form input {
+  margin: 5px 0;
+}
+header form label {
+  user-select: none;
+  text-align: left;
+}
+header form input[type='password'],
+header form input[type='text'] {
+  width: 200px;
+  background: transparent;
+  border: white 1px solid;
+  border-radius: 3px;
+  padding: 8px;
+  color: white;
+  transition: all 0.2s ease-in;
+}
+header form input[type='password']::-webkit-input-placeholder,
+header form input[type='text']::-webkit-input-placeholder {
+  color: white;
+  opacity: 0.8;
+  transition: all 0.2s ease-in;
+}
+header form input[type='password']::-moz-placeholder,
+header form input[type='text']::-moz-placeholder {
+  color: white;
+  opacity: 0.8;
+  transition: all 0.2s ease-in;
+}
+header form input[type='password']:-moz-placeholder,
+header form input[type='text']:-moz-placeholder {
+  color: white;
+  opacity: 0.8;
+  transition: all 0.2s ease-in;
+}
+header form input[type='password']:-ms-input-placeholder,
+header form input[type='text']:-ms-input-placeholder {
+  color: white;
+  opacity: 0.8;
+  transition: all 0.2s ease-in;
+}
+header form input[type='password']:focus,
+header form input[type='text']:focus {
+  background: white;
+  color: #5105e9;
+  transition: all 0.2s ease-out;
+}
+header form input[type='password']:focus::-webkit-input-placeholder,
+header form input[type='text']:focus::-webkit-input-placeholder {
+  color: #5105e9;
+  opacity: 1;
+}
+header form input[type='password']:focus::-moz-placeholder,
+header form input[type='text']:focus::-moz-placeholder {
+  color: #5105e9;
+  opacity: 1;
+}
+header form input[type='password']:focus:-moz-placeholder,
+header form input[type='text']:focus:-moz-placeholder {
+  color: #5105e9;
+  opacity: 1;
+}
+header form input[type='password']:focus:-ms-input-placeholder,
+header form input[type='text']:focus:-ms-input-placeholder {
+  color: #5105e9;
+  opacity: 1;
+}
+header form input[type='submit'],
+header form button {
+  background: transparent;
+  border: white 1px solid;
+  border-radius: 3px;
+  margin: 0 3px;
+  padding: 4px;
+  color: white;
+  transition: all 0.2s ease-in;
+}
+header form input[type='submit']:hover,
+header form button:hover {
+  background: white;
+  color: #5105e9;
+  transition: all 0.2s ease-out;
+}
+header form .scheckbox {
+  margin: 0 8px;
+  position: relative;
+}
+header form .scheckbox .icon {
+  top: -5px;
+  left: 1px;
+  width: 14px;
+  height: 14px;
+  background: url(../images/check.svg);
+  opacity: 0;
+  display: block;
+  position: absolute;
+  transition: all ease-in 0.2s;
+}
+header form .scheckbox::before {
+  content: '\feff';
+  top: 2px;
+  width: 14px;
+  height: 14px;
+  border: 1px solid white;
+  border-radius: 3px;
+  display: block;
+  position: absolute;
+  transition: all ease-in 0.2s;
+}
+header form .scheckbox.selected::before {
+  background: white;
+  transition: all ease-out 0.2s;
+}
+header form .scheckbox.selected .icon {
+  top: 2px;
+  opacity: 1;
+  transition: all ease-out 0.2s;
+}
+header form .scheckbox input {
+  opacity: 0;
+  margin: 5px;
 }
 #main .spec {
   margin: 50px;

@@ -7,6 +7,10 @@
   font-family: 'Source Sans Pro', 'Microsoft JhengHei', 'Microsoft Yahei', sans-serif;
 }
 
+input, button, select, textarea {
+  outline: none
+}
+
 body {
   width: 100%;
   overflow-x: hidden;
@@ -35,6 +39,14 @@ header {
   min-height: 200px;
   color: white;
 
+  a {
+    &:visited, &:link {
+      color: white;
+      text-decoration: none;
+      border-bottom: 1px white dashed;
+    }
+  }
+
   nav {
     background: #3e00a4;
     margin-top: 20px;
@@ -54,10 +66,8 @@ header {
       a {
         &:link {
           color: white;
+          border: none;
           text-decoration: none;
-        }
-        &:visited {
-          color: white;
         }
       }
     }
@@ -152,7 +162,7 @@ header {
 }
 
 #intro {
-  top:50px;
+  top: 50px;
   width: 40%;
   height: 158px;
   text-align: center;
@@ -166,33 +176,6 @@ header {
   .subtitle {
     font-size: 15px;
     line-height: 40px;
-  }
-
-  .button_group {
-    width: 200px;
-    margin: 15px auto;
-    border: 1px white solid;
-    border-radius: 3px;
-    font-size: 12px;
-
-    a {
-      width: 76px;
-      padding: 12px;
-      float: left;
-      display: block;
-
-      &:link, &:visited {
-        color: white;
-        text-decoration: none;
-        transition: all ease-in 0.3s;
-      }
-
-      &:hover {
-        color: #4e06e1;
-        background: white;
-        transition: all ease-in 0.3s;
-      }
-    }
   }
 }
 

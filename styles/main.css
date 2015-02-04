@@ -5,6 +5,12 @@
   list-style: none;
   font-family: 'Source Sans Pro', 'Microsoft JhengHei', 'Microsoft Yahei', sans-serif;
 }
+input,
+button,
+select,
+textarea {
+  outline: none;
+}
 body {
   width: 100%;
   overflow-x: hidden;
@@ -29,6 +35,12 @@ header {
   min-height: 200px;
   color: white;
 }
+header a:visited,
+header a:link {
+  color: white;
+  text-decoration: none;
+  border-bottom: 1px white dashed;
+}
 header nav {
   background: #3e00a4;
   margin-top: 20px;
@@ -47,10 +59,8 @@ header nav li {
 }
 header nav li a:link {
   color: white;
+  border: none;
   text-decoration: none;
-}
-header nav li a:visited {
-  color: white;
 }
 header nav .highlight {
   width: 85px;
@@ -145,30 +155,6 @@ header #user_info .user_detail .icon-money::after {
 #intro .subtitle {
   font-size: 15px;
   line-height: 40px;
-}
-#intro .button_group {
-  width: 200px;
-  margin: 15px auto;
-  border: 1px white solid;
-  border-radius: 3px;
-  font-size: 12px;
-}
-#intro .button_group a {
-  width: 76px;
-  padding: 12px;
-  float: left;
-  display: block;
-}
-#intro .button_group a:link,
-#intro .button_group a:visited {
-  color: white;
-  text-decoration: none;
-  transition: all ease-in 0.3s;
-}
-#intro .button_group a:hover {
-  color: #4e06e1;
-  background: white;
-  transition: all ease-in 0.3s;
 }
 footer {
   font-size: 12px;

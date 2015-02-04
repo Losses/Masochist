@@ -1,5 +1,71 @@
 @import url(im.css);
 
+@keyframes flow_up {
+  from {
+    margin-top: -79px;
+    opacity: 1;
+  }
+  to {
+    margin-top: -200px;
+    opacity: 0;
+  }
+}
+
+@keyframes flow_down {
+  from {
+    margin-top: -200px;
+    opacity: 0;
+  }
+  to {
+    margin-top: -79px;
+    opacity: 1;
+  }
+}
+
+@keyframes flow_up_l {
+  from {
+    margin-top: 0px;
+    opacity: 0;
+  }
+  to {
+    margin-top: -111px;
+    opacity: 1;
+  }
+}
+
+@keyframes flow_down_l {
+  from {
+    margin-top: -111px;
+    opacity: 1;
+  }
+  to {
+    margin-top: -0px;
+    opacity: 0;
+  }
+}
+
+@keyframes flow_up_r {
+  from {
+    margin-top: 0px;
+    opacity: 0;
+  }
+  to {
+    margin-top: -171px;
+    opacity: 1;
+  }
+}
+
+@keyframes flow_down_r {
+  from {
+    margin-top: -171px;
+    opacity: 1;
+  }
+  to {
+    margin-top: -0px;
+    opacity: 0;
+  }
+}
+
 html, body {
   height: 100%;
 }
@@ -24,6 +90,207 @@ header {
   #intro {
     top: 50%;
     margin: -79px 0 0 50px;
+
+    &.flow_up {
+      animation: flow_up 600ms ease-in-out;
+    }
+
+    &.flow_down {
+      animation: flow_down 600ms ease-in-out;
+    }
+
+    .button_group {
+      width: 200px;
+      margin: 15px auto;
+      border: 1px white solid;
+      border-radius: 3px;
+      font-size: 12px;
+
+      a {
+        width: 76px;
+        padding: 12px;
+        float: left;
+        display: block;
+
+        &, &:link, &:visited {
+          text-decoration: none;
+          border: none;
+          transition: all ease-in 0.3s;
+        }
+
+        &:hover {
+          color: #4e06e1;
+          background: white;
+          transition: all ease-in 0.3s;
+        }
+      }
+    }
+  }
+
+  .index_form {
+    top: 50%;
+    left: 200px;
+    width: 230px;
+    position: absolute;
+    h2 {
+      line-height: 3em;
+      text-align: center;
+    }
+  }
+
+  #login_form {
+    margin-top: -111px;
+    height: 222px;
+    display: none;
+    &.flow_up {
+      animation: flow_up_l 600ms ease-in-out;
+    }
+
+    &.flow_down {
+      animation: flow_down_l 600ms ease-in-out;
+    }
+  }
+
+  #register_form {
+    margin-top: -171px;
+    height: 342px;
+    display: none;
+    &.flow_up {
+      animation: flow_up_r 600ms ease-in-out;
+    }
+
+    &.flow_down {
+      animation: flow_down_r 600ms ease-in-out;
+    }
+    .info {
+      font-size: 10px;
+      line-height: 3em;
+    }
+
+    button {
+      margin-top: 10px;
+    }
+  }
+
+  form {
+    font-size: 13px;
+    input {
+      margin: 5px 0;
+    }
+    label {
+      user-select: none;
+      text-align: left;
+    }
+
+    input[type='password'], input[type='text'] {
+      width: 200px;
+      background: transparent;
+      border: white 1px solid;
+      border-radius: 3px;
+      padding: 8px;
+      color: white;
+      transition: all 0.2s ease-in;
+
+      &::-webkit-input-placeholder {
+        color: white;
+        opacity: 0.8;
+        transition: all 0.2s ease-in;
+      }
+      &::-moz-placeholder {
+        color: white;
+        opacity: 0.8;
+        transition: all 0.2s ease-in;
+      }
+      &:-moz-placeholder {
+        color: white;
+        opacity: 0.8;
+        transition: all 0.2s ease-in;
+      }
+      &:-ms-input-placeholder {
+        color: white;
+        opacity: 0.8;
+        transition: all 0.2s ease-in;
+      }
+
+      &:focus {
+        background: white;
+        color: #5105e9;
+        transition: all 0.2s ease-out;
+        &::-webkit-input-placeholder {
+          color: #5105e9;
+          opacity: 1;
+        }
+        &::-moz-placeholder {
+          color: #5105e9;
+          opacity: 1;
+        }
+        &:-moz-placeholder {
+          color: #5105e9;
+          opacity: 1;
+        }
+        &:-ms-input-placeholder {
+          color: #5105e9;
+          opacity: 1;
+        }
+      }
+    }
+
+    input[type='submit'], button {
+      background: transparent;
+      border: white 1px solid;
+      border-radius: 3px;
+      margin: 0 3px;
+      padding: 4px;
+      color: white;
+      transition: all 0.2s ease-in;
+      &:hover {
+        background: white;
+        color: #5105e9;
+        transition: all 0.2s ease-out;
+      }
+    }
+
+    .scheckbox {
+      margin: 0 8px;
+      position: relative;
+      .icon {
+        top: -5px;
+        left: 1px;
+        width: 14px;
+        height: 14px;
+        background: url(../images/check.svg);
+        opacity: 0;
+        display: block;
+        position: absolute;
+        transition: all ease-in 0.2s;
+      }
+      &::before {
+        content: '\feff';
+        top: 2px;
+        width: 14px;
+        height: 14px;
+        border: 1px solid white;
+        border-radius: 3px;
+        display: block;
+        position: absolute;
+        transition: all ease-in 0.2s;
+      }
+      &.selected {
+        &::before {
+          background: white;
+          transition: all ease-out 0.2s;
+        }
+        .icon {
+          top: 2px;
+          opacity: 1;
+          transition: all ease-out 0.2s;
+        }
+      }
+      input {
+        opacity: 0;
+        margin: 5px;
+      }
+    }
   }
 }
 
