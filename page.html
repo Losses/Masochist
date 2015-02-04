@@ -31,12 +31,13 @@
 
     <div class="clear index_form" id="login_form">
         <h2>登陆</h2>
+        <p class="warning">用户名不存在</p>
 
         <form>
             <input type="text" placeholder="用户名/Email" name="username"/> <br>
             <input type="password" placeholder="密码" name="password"/> <br>
 
-            <label class="scheckbox"><input type="checkbox" value="save">保存登录状态</label> <br>
+            <label class="scheckbox"><input type="checkbox" name="save">保存登录状态</label> <br>
 
             <button class="right" type="submit">登陆</button>
             <button class="cancel right">取消</button>
@@ -45,6 +46,8 @@
 
     <div class="clear index_form" id="register_form">
         <h2>注册</h2>
+
+        <p class="warning">密码错误</p>
 
         <form>
             <input type="text" placeholder="用户名" name="username"/> <br>
@@ -55,7 +58,7 @@
             <p class="info">*数据库中密码使用明文存储，请设置为不常用密码</p>
 
             <label class="scheckbox">
-                <input type="checkbox" value="accept">没读过玩命写的<a href="tos.html">许可协议</a>自愿被肛
+                <input type="checkbox" name="accept">没读过玩命写的<a href="tos.html">许可协议</a>自愿被肛
             </label> <br>
 
             <button class="right" type="submit">注册</button>

@@ -45,6 +45,9 @@ $(document).ready(function () {
     });
 
     $('.cancel').click(function (event) {
+        if (losses._STATUS_.loading) {
+            return false;
+        }
         var intro = $('#intro');
         setTimeout(function () {
             intro.show();
@@ -64,13 +67,122 @@ $(document).ready(function () {
         event.preventDefault();
     });
 
-    $('input[type=checkbox]').on('change', function () {
+    $('input[type=checkbox]').on('change', function (event) {
+        if (losses._STATUS_.loading) {
+            event.preventDefault();
+            return false;
+        }
+
         if ($(this).is(":checked"))
             $(this).parent("label").addClass("selected");
         else
             $(this).parent("label").removeClass("selected");
     });
 
+    $('input[type=submit]').click(function (event) {
+        if (losses._STATUS_.loading) {
+            event.preventDefault();
+        }
+    });
+
 
     $('.scheckbox').prepend('<i class="icon"></i>')
 });
+
+var losses = {
+        _ELEMENTS_: {
+            header: $('header'),
+            indexForms: $('.index_form'),
+            inputs: $('input')
+        },
+        _STATUS_: {
+            loading: false
+        },
+        _CACHE_: {},
+        actionSuccess: function () {
+            $('.load_spiner').remove();
+
+            losses._ELEMENTS_.header.append('<i class="icon-ok"></i>');
+
+            losses._ELEMENTS_.indexForms.each(function () {
+                $(this).removeClass('loading')
+                    .addClass('finished');
+            });
+
+            setTimeout(function () {
+                $('.icon-ok').addClass('pause');
+            }, 450);
+
+            setTimeout(function () {
+                //跳转页面代码在这
+                console.log('jump');
+            }, 1000);
+        },
+        actionFailed: function (source, target, reason) {
+            losses._STATUS_.loading = false;
+            losses._ELEMENTS_.indexForms.each(function () {
+                $(this).removeClass('loading');
+            });
+
+            if (losses._CACHE_.failedTimeoutEvent) {
+                clearTimeout(losses._CACHE_.failedTimeoutEvent);
+                losses._CACHE_.failedTimeoutEvent = false;
+            }
+
+            losses._ELEMENTS_.header.append('<i class="icon-cancel"></i>');
+
+            losses._CACHE_.failedTimeoutEvent = setTimeout(function () {
+                var targetIcon = $('.icon-cancel');
+                targetIcon.removeClass('pause')
+                    .addClass('up');
+
+                setTimeout(function () {
+                    targetIcon.remove();
+                }, 470);
+            }, 2000);
+
+            losses.warning(source, target, reason);
+        },
+        warning: function (source, target, text) {
+            var targetHeader = $('header>#' + source + '_form>h2') /*nxt line*/
+                , targetWarning = $('header>#' + source + '_form>.warning');
+
+            if (text) {
+                targetWarning.html(text);
+            }
+
+            if (losses._CACHE_.warningTimeoutEvent) {
+                clearTimeout(losses._CACHE_.warningTimeoutEvent);
+                losses._CACHE_.warningTimeoutEvent = false;
+            }
+
+            targetHeader.slideUp();
+            targetWarning.slideDown();
+
+            if (target) {
+                var targetElement = $('header>#' + source + '_form input[name=' + target + ']');
+
+                targetElement.addClass('highlight');
+            }
+
+            losses._CACHE_.warningTimeoutEvent = setTimeout(function () {
+                targetHeader.slideDown();
+                targetWarning.slideUp();
+                target && targetElement.removeClass('highlight');
+            }, 2000);
+        },
+        loading: function () {
+            losses._STATUS_.loading = true;
+
+            losses._ELEMENTS_.inputs.each(function () {
+                $(this).attr('readonly', 'true');
+            });
+
+            losses._ELEMENTS_.indexForms.each(function () {
+                $(this).addClass('loading');
+            });
+
+            losses._ELEMENTS_.header.append('<i class="icon-spin2 animate-spin load_spiner"></i>');
+        }
+    }
+    ;

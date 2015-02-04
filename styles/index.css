@@ -59,6 +59,44 @@
     opacity: 0;
   }
 }
+@keyframes flow_up_i {
+  from {
+    margin-top: 0;
+    opacity: 0;
+  }
+  to {
+    margin-top: -40px;
+    opacity: 1;
+  }
+}
+@keyframes flow_down_i {
+  from {
+    margin-top: 0;
+    opacity: 1;
+  }
+  to {
+    margin-top: -40px;
+    opacity: 0;
+  }
+}
+@keyframes flow_up_i {
+  from {
+    margin-top: -40px;
+    opacity: 0;
+  }
+  to {
+    margin-top: 0;
+    opacity: 1;
+  }
+}
+@keyframes loading_shine {
+  from {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
 /*shit webkit*/
 @-webkit-keyframes flow_up {
   from {
@@ -120,6 +158,34 @@
     opacity: 0;
   }
 }
+@-webkit-keyframes flow_down_i {
+  from {
+    margin-top: 0;
+    opacity: 0;
+  }
+  to {
+    margin-top: -40px;
+    opacity: 1;
+  }
+}
+@-webkit-keyframes flow_up_i {
+  from {
+    margin-top: 0;
+    opacity: 1;
+  }
+  to {
+    margin-top: -40px;
+    opacity: 0;
+  }
+}
+@-webkit-keyframes loading_shine {
+  from {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
 html,
 body {
   height: 100%;
@@ -139,6 +205,32 @@ header .logo {
   background-size: 700px;
   display: block;
   position: absolute;
+}
+header .icon-spin2,
+header .icon-ok {
+  top: 50%;
+  left: 300px;
+  margin: -30px 0 0 -30px;
+  color: white;
+  font-size: 60px;
+  line-height: 1em;
+  position: absolute;
+}
+header .icon-ok,
+header .icon-cancel {
+  opacity: 0;
+  -webkit-animation: flow_down_i 500ms ease-in-out;
+  animation: flow_down_i 500ms ease-in-out;
+}
+header .icon-ok.pause,
+header .icon-cancel.pause {
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused;
+}
+header .icon-ok.flow_up,
+header .icon-cancel.flow_up {
+  -webkit-animation: flow_up_i 500ms ease-in-out;
+  animation: flow_up_i 500ms ease-in-out;
 }
 header #intro {
   top: 50%;
@@ -182,10 +274,27 @@ header .index_form {
   left: 200px;
   width: 230px;
   position: absolute;
+  transition: all ease-in-out 0.3s;
+}
+header .index_form.loading {
+  -webkit-animation: loading_shine 400ms ease-in-out infinite alternate;
+  animation: loading_shine 400ms ease-in-out infinite alternate;
+}
+header .index_form.finished {
+  opacity: 0.5;
 }
 header .index_form h2 {
+  font-size: 25px;
   line-height: 3em;
   text-align: center;
+}
+header .index_form .warning {
+  font-size: 25px;
+  font-weight: bold;
+  line-height: 3em;
+  text-align: center;
+  color: #fdd000;
+  display: none;
 }
 header #login_form {
   margin-top: -111px;
@@ -288,6 +397,30 @@ header form input[type='text']:focus:-moz-placeholder {
 header form input[type='password']:focus:-ms-input-placeholder,
 header form input[type='text']:focus:-ms-input-placeholder {
   color: #5105e9;
+  opacity: 1;
+}
+header form input[type='password'].highlight,
+header form input[type='text'].highlight {
+  border-color: #fdd000;
+}
+header form input[type='password'].highlight::-webkit-input-placeholder,
+header form input[type='text'].highlight::-webkit-input-placeholder {
+  color: #fdd000;
+  opacity: 1;
+}
+header form input[type='password'].highlight::-moz-placeholder,
+header form input[type='text'].highlight::-moz-placeholder {
+  color: #fdd000;
+  opacity: 1;
+}
+header form input[type='password'].highlight:-moz-placeholder,
+header form input[type='text'].highlight:-moz-placeholder {
+  color: #fdd000;
+  opacity: 1;
+}
+header form input[type='password'].highlight:-ms-input-placeholder,
+header form input[type='text'].highlight:-ms-input-placeholder {
+  color: #fdd000;
   opacity: 1;
 }
 header form input[type='submit'],

@@ -66,6 +66,48 @@
   }
 }
 
+@keyframes flow_up_i {
+  from {
+    margin-top: 0;
+    opacity: 0;
+  }
+  to {
+    margin-top: -40px;
+    opacity: 1;
+  }
+}
+
+@keyframes flow_down_i {
+  from {
+    margin-top: 0;
+    opacity: 1;
+  }
+  to {
+    margin-top: -40px;
+    opacity: 0;
+  }
+}
+
+@keyframes flow_up_i {
+  from {
+    margin-top: -40px;
+    opacity: 0;
+  }
+  to {
+    margin-top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes loading_shine {
+  from {
+    opacity: 0.8
+  }
+  to {
+    opacity: 0.5
+  }
+}
+
 /*shit webkit*/
 @-webkit-keyframes flow_up {
   from {
@@ -133,6 +175,37 @@
   }
 }
 
+@-webkit-keyframes flow_down_i {
+  from {
+    margin-top: 0;
+    opacity: 0;
+  }
+  to {
+    margin-top: -40px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes flow_up_i {
+  from {
+    margin-top: 0;
+    opacity: 1;
+  }
+  to {
+    margin-top: -40px;
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes loading_shine {
+  from {
+    opacity: 0.8
+  }
+  to {
+    opacity: 0.5
+  }
+}
+
 html, body {
   height: 100%;
 }
@@ -152,6 +225,30 @@ header {
     background-size: 700px;
     display: block;
     position: absolute;
+  }
+
+  .icon-spin2, .icon-ok {
+    top: 50%;
+    left: 300px;
+    margin: -30px 0 0 -30px;
+    color: white;
+    font-size: 60px;
+    line-height: 1em;
+    position: absolute;
+  }
+
+  .icon-ok, .icon-cancel {
+    opacity: 0;
+    -webkit-animation: flow_down_i 500ms ease-in-out;
+    animation: flow_down_i 500ms ease-in-out;
+    &.pause {
+      -webkit-animation-play-state: paused;
+      animation-play-state: paused;
+    }
+    &.flow_up {
+      -webkit-animation: flow_up_i 500ms ease-in-out;
+      animation: flow_up_i 500ms ease-in-out;
+    }
   }
 
   #intro {
@@ -201,9 +298,26 @@ header {
     left: 200px;
     width: 230px;
     position: absolute;
+    transition: all ease-in-out 0.3s;
+    &.loading {
+      -webkit-animation: loading_shine 400ms ease-in-out infinite alternate;
+      animation: loading_shine 400ms ease-in-out infinite alternate;
+    }
+    &.finished {
+      opacity: 0.5;
+    }
     h2 {
+      font-size: 25px;
       line-height: 3em;
       text-align: center;
+    }
+    .warning {
+      font-size: 25px;
+      font-weight: bold;
+      line-height: 3em;
+      text-align: center;
+      color: #fdd000;
+      display: none;
     }
   }
 
@@ -303,6 +417,27 @@ header {
         }
         &:-ms-input-placeholder {
           color: #5105e9;
+          opacity: 1;
+        }
+      }
+
+      &.highlight {
+        border-color: #fdd000;
+
+        &::-webkit-input-placeholder {
+          color: #fdd000;
+          opacity: 1;
+        }
+        &::-moz-placeholder {
+          color: #fdd000;
+          opacity: 1;
+        }
+        &:-moz-placeholder {
+          color: #fdd000;
+          opacity: 1;
+        }
+        &:-ms-input-placeholder {
+          color: #fdd000;
           opacity: 1;
         }
       }
