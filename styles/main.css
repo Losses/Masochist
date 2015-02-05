@@ -11,6 +11,7 @@ select,
 textarea {
   outline: none;
 }
+html,
 body {
   width: 100%;
   overflow-x: hidden;
@@ -193,6 +194,6 @@ footer a:hover {
   }
   header nav .highlight {
     height: 51px;
-    margin-right: -45px;
+    margin-right: -55px;
   }
 }
