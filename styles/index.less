@@ -1,3 +1,4 @@
+@import (reference) "function.less";
 @import url(im.css);
 
 @keyframes flow_up {
@@ -289,7 +290,7 @@ header {
       width: 200px;
       margin: 15px auto;
       border: 1px white solid;
-      border-radius: 3px;
+      .border-radius(3px);
       font-size: 12px;
 
       a {
@@ -393,7 +394,7 @@ header {
       width: 200px;
       background: transparent;
       border: white 1px solid;
-      border-radius: 3px;
+      .border-radius(3px);
       padding: 8px;
       color: white;
       transition: all 0.2s ease-in;
@@ -466,7 +467,7 @@ header {
     input[type='submit'], button {
       background: transparent;
       border: white 1px solid;
-      border-radius: 3px;
+      .border-radius(3px);
       margin: 0 3px;
       padding: 4px;
       color: white;
@@ -498,7 +499,7 @@ header {
         width: 14px;
         height: 14px;
         border: 1px solid white;
-        border-radius: 3px;
+        .border-radius(3px);
         display: block;
         position: absolute;
         transition: all ease-in 0.2s;

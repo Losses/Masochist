@@ -268,6 +268,9 @@ header #intro .button_group {
   margin: 15px auto;
   border: 1px white solid;
   border-radius: 3px;
+  -o-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
   font-size: 12px;
 }
 header #intro .button_group a {
@@ -364,6 +367,9 @@ header form input[type='text'] {
   background: transparent;
   border: white 1px solid;
   border-radius: 3px;
+  -o-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
   padding: 8px;
   color: white;
   transition: all 0.2s ease-in;
@@ -447,6 +453,9 @@ header form button {
   background: transparent;
   border: white 1px solid;
   border-radius: 3px;
+  -o-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
   margin: 0 3px;
   padding: 4px;
   color: white;
@@ -480,6 +489,9 @@ header form .scheckbox::before {
   height: 14px;
   border: 1px solid white;
   border-radius: 3px;
+  -o-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
   display: block;
   position: absolute;
   transition: all ease-in 0.2s;

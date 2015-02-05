@@ -7,6 +7,9 @@ header #user_info {
 header #user_info .face {
   border: white 8px solid;
   border-radius: 50%;
+  -o-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 header #user_info .name_panel {
