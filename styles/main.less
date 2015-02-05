@@ -54,6 +54,7 @@ header {
     padding-right: 60px;
     float: right;
     transform: skew(-22.5deg);
+    transition: all 0.3s;
 
     * {
       transform: skew(22.5deg);
@@ -195,6 +196,33 @@ footer {
 
     &:hover {
       color: #3c324d;
+    }
+  }
+}
+
+@media only screen and (max-width: 530px) {
+  header {
+    nav {
+      width: 100%;
+      margin-top: 0px;
+      margin-right: 0;
+      padding-right: 0;
+      transform: skew(0deg);
+      display: flex;
+      flex-flow: row;
+
+      * {
+        transform: skew(0deg);
+      }
+      li {
+        padding: 15px 0 15px 0;
+        flex: 1;
+        text-align: center;
+      }
+      .highlight {
+        height: 51px;
+        margin-right: -45px;
+      }
     }
   }
 }

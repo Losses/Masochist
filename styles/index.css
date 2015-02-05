@@ -205,6 +205,7 @@ header .logo {
   background-size: 700px;
   display: block;
   position: absolute;
+  transition: all ease-in-out 500ms;
 }
 header .icon-spin2,
 header .icon-ok {
@@ -481,11 +482,13 @@ header form .scheckbox input {
 #main .spec {
   margin: 50px;
   display: flex;
-  flex-flow: row;
+  flex-flow: row wrap;
   justify-content: space-around;
 }
 #main .spec li {
   max-width: 200px;
+  min-width: 200px;
+  width: 200px;
   flex: 1;
   text-align: center;
   position: relative;
@@ -512,4 +515,18 @@ header form .scheckbox input {
 }
 footer {
   flex: 0;
+}
+/*响应式设计*/
+@media only screen and (max-width: 980px) {
+  #intro {
+    width: 100%;
+    margin-left: 0 !important;
+  }
+  .index_form {
+    left: 50% !important;
+    margin-left: -115px !important;
+  }
+  .logo {
+    right: -1000px !important;
+  }
 }

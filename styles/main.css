@@ -48,6 +48,7 @@ header nav {
   padding-right: 60px;
   float: right;
   transform: skew(-22.5deg);
+  transition: all 0.3s;
 }
 header nav * {
   transform: skew(22.5deg);
@@ -171,4 +172,27 @@ footer a:visited {
 }
 footer a:hover {
   color: #3c324d;
+}
+@media only screen and (max-width: 530px) {
+  header nav {
+    width: 100%;
+    margin-top: 0px;
+    margin-right: 0;
+    padding-right: 0;
+    transform: skew(0deg);
+    display: flex;
+    flex-flow: row;
+  }
+  header nav * {
+    transform: skew(0deg);
+  }
+  header nav li {
+    padding: 15px 0 15px 0;
+    flex: 1;
+    text-align: center;
+  }
+  header nav .highlight {
+    height: 51px;
+    margin-right: -45px;
+  }
 }
