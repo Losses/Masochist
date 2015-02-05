@@ -194,7 +194,7 @@ var losses = {
 
             losses._ELEMENTS_.header.append('<i class="icon-spin2 animate-spin load_spiner"></i>');
         },
-        testReg:function(){
+        test:function(){
             losses.actionSuccess('账户注册完成，请检查确认注册邮件之后登陆。');
         }
     }
