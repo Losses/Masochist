@@ -66,7 +66,7 @@
   }
 }
 
-@keyframes flow_up_i {
+@keyframes flow_up_r {
   from {
     margin-top: 0;
     opacity: 0;
@@ -74,21 +74,21 @@
   to {
     margin-top: -40px;
     opacity: 1;
+  }
+}
+
+@keyframes flow_up_i {
+  from {
+    margin-top: 0;
+    opacity: 1;
+  }
+  to {
+    margin-top: -40px;
+    opacity: 0;
   }
 }
 
 @keyframes flow_down_i {
-  from {
-    margin-top: 0;
-    opacity: 1;
-  }
-  to {
-    margin-top: -40px;
-    opacity: 0;
-  }
-}
-
-@keyframes flow_up_i {
   from {
     margin-top: -40px;
     opacity: 0;
@@ -175,17 +175,6 @@
   }
 }
 
-@-webkit-keyframes flow_down_i {
-  from {
-    margin-top: 0;
-    opacity: 0;
-  }
-  to {
-    margin-top: -40px;
-    opacity: 1;
-  }
-}
-
 @-webkit-keyframes flow_up_i {
   from {
     margin-top: 0;
@@ -194,6 +183,17 @@
   to {
     margin-top: -40px;
     opacity: 0;
+  }
+}
+
+@-webkit-keyframes flow_down_i {
+  from {
+    margin-top: -40px;
+    opacity: 0;
+  }
+  to {
+    margin-top: 0;
+    opacity: 1;
   }
 }
 
@@ -233,23 +233,42 @@ header {
     left: 300px;
     margin: -30px 0 0 -30px;
     color: white;
-    font-size: 60px;
-    line-height: 1em;
+    white-space: nowrap;
+    font-size: 13px;
+    //line-height: 65px;
     position: absolute;
+    transition: all 0.5s;
+    &::before {
+      font-size: 60px;
+    }
   }
 
   .icon-ok, .icon-cancel {
+    width: 70px;
     opacity: 0;
-    -webkit-animation: flow_down_i 500ms ease-in-out;
-    animation: flow_down_i 500ms ease-in-out;
+    overflow: hidden;
+    -webkit-animation: flow_down_i 520ms ease-in-out;
+    animation: flow_down_i 520ms ease-in-out;
     &.pause {
       -webkit-animation-play-state: paused;
       animation-play-state: paused;
+
+      margin-top: 0;
+      opacity: 1;
     }
     &.flow_up {
       -webkit-animation: flow_up_i 500ms ease-in-out;
       animation: flow_up_i 500ms ease-in-out;
     }
+    &.extend {
+      margin-left: -165px;
+      width: 400px;
+    }
+  }
+
+  .icon_text {
+    top: -10px;
+    position: relative;
   }
 
   #intro {
@@ -305,7 +324,7 @@ header {
       animation: loading_shine 400ms ease-in-out infinite alternate;
     }
     &.finished {
-      opacity: 0.5;
+      opacity: 0.3;
     }
     h2 {
       font-size: 25px;

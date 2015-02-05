@@ -59,7 +59,7 @@
     opacity: 0;
   }
 }
-@keyframes flow_up_i {
+@keyframes flow_up_r {
   from {
     margin-top: 0;
     opacity: 0;
@@ -67,19 +67,19 @@
   to {
     margin-top: -40px;
     opacity: 1;
+  }
+}
+@keyframes flow_up_i {
+  from {
+    margin-top: 0;
+    opacity: 1;
+  }
+  to {
+    margin-top: -40px;
+    opacity: 0;
   }
 }
 @keyframes flow_down_i {
-  from {
-    margin-top: 0;
-    opacity: 1;
-  }
-  to {
-    margin-top: -40px;
-    opacity: 0;
-  }
-}
-@keyframes flow_up_i {
   from {
     margin-top: -40px;
     opacity: 0;
@@ -158,16 +158,6 @@
     opacity: 0;
   }
 }
-@-webkit-keyframes flow_down_i {
-  from {
-    margin-top: 0;
-    opacity: 0;
-  }
-  to {
-    margin-top: -40px;
-    opacity: 1;
-  }
-}
 @-webkit-keyframes flow_up_i {
   from {
     margin-top: 0;
@@ -176,6 +166,16 @@
   to {
     margin-top: -40px;
     opacity: 0;
+  }
+}
+@-webkit-keyframes flow_down_i {
+  from {
+    margin-top: -40px;
+    opacity: 0;
+  }
+  to {
+    margin-top: 0;
+    opacity: 1;
   }
 }
 @-webkit-keyframes loading_shine {
@@ -213,25 +213,43 @@ header .icon-ok {
   left: 300px;
   margin: -30px 0 0 -30px;
   color: white;
-  font-size: 60px;
-  line-height: 1em;
+  white-space: nowrap;
+  font-size: 13px;
   position: absolute;
+  transition: all 0.5s;
+}
+header .icon-spin2::before,
+header .icon-ok::before {
+  font-size: 60px;
 }
 header .icon-ok,
 header .icon-cancel {
+  width: 70px;
   opacity: 0;
-  -webkit-animation: flow_down_i 500ms ease-in-out;
-  animation: flow_down_i 500ms ease-in-out;
+  overflow: hidden;
+  -webkit-animation: flow_down_i 520ms ease-in-out;
+  animation: flow_down_i 520ms ease-in-out;
 }
 header .icon-ok.pause,
 header .icon-cancel.pause {
   -webkit-animation-play-state: paused;
   animation-play-state: paused;
+  margin-top: 0;
+  opacity: 1;
 }
 header .icon-ok.flow_up,
 header .icon-cancel.flow_up {
   -webkit-animation: flow_up_i 500ms ease-in-out;
   animation: flow_up_i 500ms ease-in-out;
+}
+header .icon-ok.extend,
+header .icon-cancel.extend {
+  margin-left: -165px;
+  width: 400px;
+}
+header .icon_text {
+  top: -10px;
+  position: relative;
 }
 header #intro {
   top: 50%;
@@ -282,7 +300,7 @@ header .index_form.loading {
   animation: loading_shine 400ms ease-in-out infinite alternate;
 }
 header .index_form.finished {
-  opacity: 0.5;
+  opacity: 0.3;
 }
 header .index_form h2 {
   font-size: 25px;

@@ -99,10 +99,14 @@ var losses = {
             loading: false
         },
         _CACHE_: {},
-        actionSuccess: function () {
+        actionSuccess: function (hint) {
             $('.load_spiner').remove();
 
-            losses._ELEMENTS_.header.append('<i class="icon-ok"></i>');
+            hint = hint || "";
+
+            losses._ELEMENTS_.header.append('<i class="icon-ok"><span class="icon_text">' + hint + '</span></i>');
+
+            var okIcon = $('.icon-ok');
 
             losses._ELEMENTS_.indexForms.each(function () {
                 $(this).removeClass('loading')
@@ -110,7 +114,11 @@ var losses = {
             });
 
             setTimeout(function () {
-                $('.icon-ok').addClass('pause');
+                okIcon.addClass('pause');
+
+                setTimeout(function () {
+                    okIcon.addClass('extend');
+                }, 100);
             }, 450);
 
             setTimeout(function () {
@@ -185,6 +193,9 @@ var losses = {
             });
 
             losses._ELEMENTS_.header.append('<i class="icon-spin2 animate-spin load_spiner"></i>');
+        },
+        testReg:function(){
+            losses.actionSuccess('账户注册完成，请检查确认注册邮件之后登陆。');
         }
     }
     ;
