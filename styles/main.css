@@ -90,37 +90,9 @@ header nav::after {
   display: block;
   clear: both;
 }
-header #user_info {
-  width: 600px;
-  padding: 40px 30px;
-}
-header #user_info .face {
-  border: white 8px solid;
-  border-radius: 50%;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-}
-header #user_info .name_panel {
-  margin: 29px 0 10px 0;
-}
-header #user_info .name_panel .name {
-  font-size: 30px;
-  margin: 0 10px 10px 10px;
-}
-header #user_info .name_panel .user_type {
-  color: #ffae00;
-}
-header #user_info .user_detail {
-  margin: 0 0 0 20px;
-}
-header #user_info .user_detail .icon-chart-pie::after {
-  content: 'Mb';
-}
-header #user_info .user_detail .icon-money::after {
-  content: '元';
-}
 .button {
   top: -2px;
-  border: 1px white solid;
+  border: 1px white solid !important;
   border-radius: 3px;
   font-size: 11px;
   margin: 0 0 0 10px;
