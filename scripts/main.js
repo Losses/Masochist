@@ -8,10 +8,8 @@
     for (var x = 0; x < headerLis.length; x++) {
         $(headerLis[x]).on({
                 'mouseenter': function (event) {
-                    $(highlightItem).css('right', $("body").width() - ($(event.target).offset().left + 58));
+                    $(highlightItem).css('right', $("body").width() - ($(event.target).offset().left + 75));
                     $(this).addClass('high');
-
-                    console.log(document.body.scrollWidth);
 
                     event.stopPropagation();
                 },
