@@ -181,6 +181,64 @@ var losses = {
                 target && targetElement.removeClass('highlight');
             }, 2000);
         },
+        cpSwitch: function () {
+            var hiddenItem = $('.logo, #intro, .index_form')
+                , main = $('#main')
+                , waiting = true
+                , checkCount = 0
+                , intervalEvent;
+
+            hiddenItem.each(function () {
+                $(this).addClass('exit');
+            });
+
+            main.slideUp(500);
+            $('.blank').slideDown(500);
+
+            setTimeout(function () {
+                waiting = false;
+            }, 500);
+
+            $.get('./cp.html', function (data) {
+                intervalEvent = setInterval(function () {
+                    if (!waiting) {
+                        clearInterval(intervalEvent);
+
+                        main.remove();
+                        hiddenItem.each(function () {
+                            $(this).remove();
+                        });
+
+                        $('#custom_style').attr('href', 'styles/cp.css')
+                            .after('<link type="text/css" id="temp" rel="stylesheet" href="styles/index2cp.css"/>');
+
+                        var title = /<title>([\s\S]*?)<\/title>/gmi.exec(data)[1]
+                            , copyObject = $("body").html()
+                            , mainContent = /(<!--24RE9O--->[\s\S]*?<!--J7E0Q2-->)/gmi.exec(data)[1]
+                            , headerContent = /(<!--1AF4H7-->[\s\S]*?<!--T72AM2-->)/gmi.exec(data)[1];
+
+                        $('header').append(headerContent)
+                            .after(mainContent);
+                        $("title").html(title);
+
+                        $('.blank').slideUp(500);
+
+                        setTimeout(function () {
+                            $("#highlight,#main").each(function () {
+                                $(this).slideDown(500);
+                            });
+
+                            $('#temp').remove();
+                        }, 100);
+
+                        //history.pushState(copyObject, title, 'cp.html');
+                    } else {
+                        checkCount++;
+                    }
+                }, 100);
+
+            });
+        },
         loading: function () {
             losses._STATUS_.loading = true;
 
@@ -194,7 +252,7 @@ var losses = {
 
             losses._ELEMENTS_.header.append('<i class="icon-spin2 animate-spin load_spiner"></i>');
         },
-        test:function(){
+        test: function () {
             losses.actionSuccess('账户注册完成，请检查确认注册邮件之后登陆。');
         }
     }

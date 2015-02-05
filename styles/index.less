@@ -1,5 +1,5 @@
 @import (reference) "function.less";
-@import url(im.css);
+@import url(webfonts/im.css);
 
 @keyframes flow_up {
   from {
@@ -215,7 +215,12 @@ header {
     background-size: 700px;
     display: block;
     position: absolute;
-    transition: all ease-in-out 500ms;
+    transition: all ease-in-out 0.5s;
+
+    &.exit {
+      left: auto;
+      right: -500px;
+    }
   }
 
   .icon-spin2, .icon-ok {
@@ -275,6 +280,10 @@ header {
       animation: flow_down 605ms ease-in-out;
     }
 
+    &.exit {
+      left: -1000px !important;
+    }
+
     .button_group {
       width: 200px;
       margin: 15px auto;
@@ -308,13 +317,16 @@ header {
     left: 200px;
     width: 230px;
     position: absolute;
-    transition: all ease-in-out 0.3s;
+    transition: all ease-in-out 0.5s;
     &.loading {
       -webkit-animation: loading_shine 400ms ease-in-out infinite alternate;
       animation: loading_shine 400ms ease-in-out infinite alternate;
     }
     &.finished {
       opacity: 0.3;
+    }
+    &.exit {
+      left: -1000px !important;
     }
     h2 {
       font-size: 25px;
@@ -548,10 +560,6 @@ header {
       }
     }
   }
-}
-
-footer {
-  .flex(0);
 }
 
 /*响应式设计*/

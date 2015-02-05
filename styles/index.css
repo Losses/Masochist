@@ -1,4 +1,4 @@
-@import url(im.css);
+@import url(webfonts/im.css);
 @keyframes flow_up {
   from {
     margin-top: -79px;
@@ -195,7 +195,11 @@ header .logo {
   background-size: 700px;
   display: block;
   position: absolute;
-  transition: all ease-in-out 500ms;
+  transition: all ease-in-out 0.5s;
+}
+header .logo.exit {
+  left: auto;
+  right: -500px;
 }
 header .icon-spin2,
 header .icon-ok {
@@ -253,6 +257,9 @@ header #intro.flow_down {
   -webkit-animation: flow_down 610ms ease-in-out;
   animation: flow_down 605ms ease-in-out;
 }
+header #intro.exit {
+  left: -1000px !important;
+}
 header #intro .button_group {
   width: 200px;
   margin: 15px auto;
@@ -286,7 +293,7 @@ header .index_form {
   left: 200px;
   width: 230px;
   position: absolute;
-  transition: all ease-in-out 0.3s;
+  transition: all ease-in-out 0.5s;
 }
 header .index_form.loading {
   -webkit-animation: loading_shine 400ms ease-in-out infinite alternate;
@@ -294,6 +301,9 @@ header .index_form.loading {
 }
 header .index_form.finished {
   opacity: 0.3;
+}
+header .index_form.exit {
+  left: -1000px !important;
 }
 header .index_form h2 {
   font-size: 25px;
@@ -541,14 +551,6 @@ header form .scheckbox input {
   line-height: 50px;
   color: #1a0b3d;
   margin-top: 90px;
-}
-footer {
-  -webkit-box-flex: 0;
-  -moz-box-flex: 0;
-  width: 0%;
-  -webkit-flex: 0;
-  -ms-flex: 0;
-  flex: 0;
 }
 /*响应式设计*/
 @media only screen and (max-width: 980px) {
