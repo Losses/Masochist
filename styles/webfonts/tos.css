@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'tos';
-  src: url('../fonts/tos.eot?11220204');
-  src: url('../fonts/tos.eot?11220204#iefix') format('embedded-opentype'),
-       url('../fonts/tos.woff?11220204') format('woff'),
-       url('../fonts/tos.ttf?11220204') format('truetype'),
-       url('../fonts/tos.svg?11220204#tos') format('svg');
+  src: url('../../fonts/tos.eot?11220204');
+  src: url('../../fonts/tos.eot?11220204#iefix') format('embedded-opentype'),
+       url('../../fonts/tos.woff?11220204') format('woff'),
+       url('../../fonts/tos.ttf?11220204') format('truetype'),
+       url('../../fonts/tos.svg?11220204#tos') format('svg');
   font-weight: normal;
   font-style: normal;
 }
