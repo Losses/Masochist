@@ -155,6 +155,10 @@ footer a:hover {
     margin-right: 0;
     padding-right: 0;
     transform: skew(0deg);
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
     display: flex;
     flex-flow: row;
   }

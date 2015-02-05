@@ -1,12 +1,13 @@
+@import (reference) "function.less";
 @import url(tosi.css);
 
 #main {
-  display: flex;
+  .display_flex;
   flex-flow: row;
   margin: 30px;
 
   .row {
-    flex: 1;
+    .flex(1);
 
     .card {
       position: relative;

@@ -527,14 +527,14 @@ header {
 
   .spec {
     margin: 50px;
-    display: flex;
+    .display_flex;
     flex-flow: row wrap;
     justify-content: space-around;
     li {
       max-width: 200px;
       min-width: 200px;
       width: 200px;
-      flex: 1;
+      .flex(1);
       text-align: center;
       position: relative;
       &::before {
@@ -562,7 +562,7 @@ header {
 }
 
 footer {
-  flex: 0;
+  .flex(0);
 }
 
 /*响应式设计*/
