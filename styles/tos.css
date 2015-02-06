@@ -1,41 +1,33 @@
 @import url(webfonts/tos.css);
 #main {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  flex-flow: row;
-  margin: 30px;
+  margin: 60px 30px;
+  column-count: 2;
+  column-gap: 10px;
 }
-#main .row {
-  -webkit-box-flex: 1;
-  -moz-box-flex: 1;
-  width: 20%;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-}
-#main .row .card {
+#main .card {
+  margin: 20px 0;
   position: relative;
-  margin-top: 30px;
-  padding-left: 120px;
+  display: inline-block;
 }
-#main .row .card::before {
-  left: 0px;
+#main .card i::after {
   top: 50%;
   margin-top: -32.5px;
   color: #4309d2;
   font-size: 90px;
   line-height: 1em;
-  position: absolute;
+  float: left;
+  position: relative;
+  display: block;
 }
-#main .row .card h2 {
+#main .card > div {
+  float: left;
+}
+#main .card h2 {
   font-size: 25px;
   line-height: 1.5em;
   color: #170d32;
 }
-#main .row .card p {
+#main .card p {
   font-size: 13px;
   line-height: 1.8em;
   color: #1c0b47;

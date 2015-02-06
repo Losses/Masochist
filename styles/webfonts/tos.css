@@ -19,7 +19,7 @@
 }
 */
  
- [class^="icon-"]:before, [class*=" icon-"]:before {
+ [class^="icon-"]:after, [class*=" icon-"]:after {
   font-family: "tos";
   font-style: normal;
   font-weight: normal;
@@ -50,10 +50,10 @@
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
  
-.icon-welcome:before { content: '\e800'; } /* '' */
-.icon-account:before { content: '\e801'; } /* '' */
-.icon-money:before { content: '\e802'; } /* '' */
-.icon-ownership:before { content: '\e803'; } /* '' */
-.icon-secury:before { content: '\e804'; } /* '' */
-.icon-service:before { content: '\e805'; } /* '' */
-.icon-use:before { content: '\e806'; } /* '' */
+.icon-welcome:after { content: '\e800'; } /* '' */
+.icon-account:after { content: '\e801'; } /* '' */
+.icon-money:after { content: '\e802'; } /* '' */
+.icon-ownership:after { content: '\e803'; } /* '' */
+.icon-secury:after { content: '\e804'; } /* '' */
+.icon-service:after { content: '\e805'; } /* '' */
+.icon-use:after { content: '\e806'; } /* '' */
