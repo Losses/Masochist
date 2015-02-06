@@ -2,173 +2,100 @@
 @keyframes flow_up {
   from {
     margin-top: -79px;
+    visibility: visible;
     opacity: 1;
   }
   to {
     margin-top: -200px;
+    visibility: hidden;
     opacity: 0;
   }
 }
 @keyframes flow_down {
   from {
     margin-top: -200px;
+    visibility: hidden;
     opacity: 0;
   }
   to {
     margin-top: -79px;
+    visibility: visible;
     opacity: 1;
   }
 }
 @keyframes flow_up_l {
   from {
     margin-top: 0;
+    visibility: hidden;
     opacity: 0;
   }
   to {
     margin-top: -111px;
+    visibility: visible;
     opacity: 1;
   }
 }
 @keyframes flow_down_l {
   from {
     margin-top: -111px;
+    visibility: visible;
     opacity: 1;
   }
   to {
     margin-top: 0px;
+    visibility: hidden;
     opacity: 0;
   }
 }
 @keyframes flow_up_r {
   from {
     margin-top: 0;
+    visibility: hidden;
     opacity: 0;
   }
   to {
     margin-top: -171px;
+    visibility: visible;
     opacity: 1;
   }
 }
 @keyframes flow_down_r {
   from {
     margin-top: -171px;
+    visibility: visible;
     opacity: 1;
   }
   to {
     margin-top: 0px;
+    visibility: hidden;
     opacity: 0;
   }
 }
 @keyframes flow_up_i {
   from {
     margin-top: 0;
+    visibility: visible;
     opacity: 1;
   }
   to {
     margin-top: -40px;
+    visibility: hidden;
     opacity: 0;
   }
 }
 @keyframes flow_down_i {
   from {
     margin-top: -40px;
+    visibility: hidden;
     opacity: 0;
   }
   to {
     margin-top: 0;
+    visibility: visible;
     opacity: 1;
   }
 }
 @keyframes loading_shine {
-  from {
-    opacity: 0.8;
-  }
-  to {
-    opacity: 0.5;
-  }
-}
-/*shit webkit*/
-@-webkit-keyframes flow_up {
-  from {
-    margin-top: -79px;
-    opacity: 1;
-  }
-  to {
-    margin-top: -200px;
-    opacity: 0;
-  }
-}
-@-webkit-keyframes flow_down {
-  from {
-    margin-top: -200px;
-    opacity: 0;
-  }
-  to {
-    margin-top: -79px;
-    opacity: 1;
-  }
-}
-@-webkit-keyframes flow_up_l {
-  from {
-    margin-top: 0;
-    opacity: 0;
-  }
-  to {
-    margin-top: -111px;
-    opacity: 1;
-  }
-}
-@-webkit-keyframes flow_down_l {
-  from {
-    margin-top: -111px;
-    opacity: 1;
-  }
-  to {
-    margin-top: 0px;
-    opacity: 0;
-  }
-}
-@-webkit-keyframes flow_up_r {
-  from {
-    margin-top: 0;
-    opacity: 0;
-  }
-  to {
-    margin-top: -171px;
-    opacity: 1;
-  }
-}
-@-webkit-keyframes flow_down_r {
-  from {
-    margin-top: -171px;
-    opacity: 1;
-  }
-  to {
-    margin-top: 0px;
-    opacity: 0;
-  }
-}
-@-webkit-keyframes flow_up_i {
-  from {
-    margin-top: 0;
-    opacity: 1;
-  }
-  to {
-    margin-top: -40px;
-    opacity: 0;
-  }
-}
-@-webkit-keyframes flow_down_i {
-  from {
-    margin-top: -40px;
-    opacity: 0;
-  }
-  to {
-    margin-top: 0;
-    opacity: 1;
-  }
-}
-@-webkit-keyframes loading_shine {
   from {
     opacity: 0.8;
   }
@@ -221,20 +148,11 @@ header .icon-cancel {
   width: 70px;
   opacity: 0;
   overflow: hidden;
-  -webkit-animation: flow_down_i 520ms ease-in-out;
-  animation: flow_down_i 520ms ease-in-out;
-}
-header .icon-ok.pause,
-header .icon-cancel.pause {
-  -webkit-animation-play-state: paused;
-  animation-play-state: paused;
-  margin-top: 0;
-  opacity: 1;
+  animation: flow_down_i 500ms ease-in-out forwards;
 }
 header .icon-ok.flow_up,
 header .icon-cancel.flow_up {
-  -webkit-animation: flow_up_i 500ms ease-in-out;
-  animation: flow_up_i 500ms ease-in-out;
+  animation: flow_up_i 500ms ease-in-out forwards;
 }
 header .icon-ok.extend,
 header .icon-cancel.extend {
@@ -250,12 +168,13 @@ header #intro {
   margin: -79px 0 0 50px;
 }
 header #intro.flow_up {
-  -webkit-animation: flow_up 610ms ease-in-out;
-  animation: flow_up 605ms ease-in-out;
+  animation: flow_up 600ms ease-in-out forwards;
 }
 header #intro.flow_down {
-  -webkit-animation: flow_down 610ms ease-in-out;
-  animation: flow_down 605ms ease-in-out;
+  margin-top: -200px;
+  visibility: hidden;
+  opacity: 0;
+  animation: flow_down 600ms ease-in-out 400ms forwards;
 }
 header #intro.exit {
   left: -1000px !important;
@@ -296,7 +215,6 @@ header .index_form {
   transition: all ease-in-out 0.5s;
 }
 header .index_form.loading {
-  -webkit-animation: loading_shine 400ms ease-in-out infinite alternate;
   animation: loading_shine 400ms ease-in-out infinite alternate;
 }
 header .index_form.finished {
@@ -321,28 +239,30 @@ header .index_form .warning {
 header #login_form {
   margin-top: -111px;
   height: 222px;
-  display: none;
+  visibility: hidden;
 }
 header #login_form.flow_up {
-  -webkit-animation: flow_up_l 610ms ease-in-out;
-  animation: flow_up_l 605ms ease-in-out;
+  margin-top: 0;
+  visibility: hidden;
+  opacity: 0;
+  animation: flow_up_l 600ms ease-in-out 400ms forwards;
 }
 header #login_form.flow_down {
-  -webkit-animation: flow_down_l 610ms ease-in-out;
-  animation: flow_down_l 605ms ease-in-out;
+  animation: flow_down_l 600ms ease-in-out forwards;
 }
 header #register_form {
   margin-top: -171px;
   height: 342px;
-  display: none;
+  visibility: hidden;
 }
 header #register_form.flow_up {
-  -webkit-animation: flow_up_r 610ms ease-in-out;
-  animation: flow_up_r 605ms ease-in-out;
+  margin-top: 0;
+  visibility: hidden;
+  opacity: 0;
+  animation: flow_up_r 600ms ease-in-out 400ms forwards;
 }
 header #register_form.flow_down {
-  -webkit-animation: flow_down_r 610ms ease-in-out;
-  animation: flow_down_r 605ms ease-in-out;
+  animation: flow_down_r 600ms ease-in-out forwards;
 }
 header #register_form .info {
   font-size: 10px;

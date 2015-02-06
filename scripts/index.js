@@ -2,34 +2,24 @@
  * Created by Don on 2/4/2015.
  */
 $(document).ready(function () {
+    var intro = $('#intro');
+
     function showForm(type) {
-        var intro = $('#intro') /*nxt line*/
-            , loginForm = $(type);
+        var loginForm = $(type);
 
-        intro.addClass('flow_up');
-        setTimeout(function () {
-            intro.hide()
-                .removeClass('flow_up');
-        }, 600);
-        setTimeout(function () {
-            loginForm.show()
-                .addClass('flow_up');
-        }, 400);
+        intro.addClass('flow_up')
+            .removeClass('flow_down');
 
-        setTimeout(function () {
-            loginForm.removeClass('flow_up');
-        }, 1000);
+        loginForm.addClass('flow_up')
+            .removeClass('flow_down');
     }
 
     function hideForm(type) {
         var loginForm = $(type);
 
-        loginForm.addClass('flow_down');
+        loginForm.removeClass('flow_up')
+            .addClass('flow_down');
 
-        setTimeout(function () {
-            loginForm.removeClass('flow_down')
-                .hide();
-        }, 600);
     }
 
     $('#login').click(function (event) {
@@ -48,17 +38,11 @@ $(document).ready(function () {
         if (losses._STATUS_.loading) {
             return false;
         }
-        var intro = $('#intro');
-        setTimeout(function () {
-            intro.show();
-            intro.addClass('flow_down');
-        }, 400);
 
-        setTimeout(function () {
-            intro.removeClass('flow_down');
-        }, 1000);
+        intro.addClass('flow_down')
+            .removeClass('flow_up');
 
-        if (!$('#login_form').is(':hidden')) {
+        if ($('#login_form').hasClass('flow_up')) {
             hideForm('#login_form');
         } else {
             hideForm('#register_form');
@@ -90,170 +74,169 @@ $(document).ready(function () {
 });
 
 var losses = {
-        _ELEMENTS_: {
-            header: $('header'),
-            indexForms: $('.index_form'),
-            inputs: $('input')
-        },
-        _STATUS_: {
-            loading: false
-        },
-        _CACHE_: {},
-        actionSuccess: function (hint) {
-            $('.load_spiner').remove();
+    _ELEMENTS_: {
+        header: $('header'),
+        indexForms: $('.index_form'),
+        inputs: $('input')
+    },
+    _STATUS_: {
+        loading: false
+    },
+    _CACHE_: {},
+    actionSuccess: function (hint) {
+        $('.load_spiner').remove();
 
-            hint = hint || "";
+        hint = hint || "";
 
-            losses._ELEMENTS_.header.append('<i class="icon-ok"><span class="icon_text">' + hint + '</span></i>');
+        losses._ELEMENTS_.header.append('<i class="icon-ok"><span class="icon_text">' + hint + '</span></i>');
 
-            var okIcon = $('.icon-ok');
+        var okIcon = $('.icon-ok');
 
-            losses._ELEMENTS_.indexForms.each(function () {
-                $(this).removeClass('loading')
-                    .addClass('finished');
-            });
+        losses._ELEMENTS_.indexForms.each(function () {
+            $(this).removeClass('loading')
+                .addClass('finished');
+        });
 
-            setTimeout(function () {
-                okIcon.addClass('pause');
-
-                setTimeout(function () {
-                    okIcon.addClass('extend');
-                }, 100);
-            }, 450);
+        setTimeout(function () {
+            okIcon.addClass('pause');
 
             setTimeout(function () {
-                //跳转页面代码在这
-                console.log('jump');
-            }, 1000);
-        },
-        actionFailed: function (source, target, reason) {
-            losses._STATUS_.loading = false;
-            losses._ELEMENTS_.indexForms.each(function () {
-                $(this).removeClass('loading');
-            });
+                okIcon.addClass('extend');
+            }, 100);
+        }, 450);
 
-            if (losses._CACHE_.failedTimeoutEvent) {
-                clearTimeout(losses._CACHE_.failedTimeoutEvent);
-                losses._CACHE_.failedTimeoutEvent = false;
-            }
+        setTimeout(function () {
+            //跳转页面代码在这
+            console.log('jump');
+        }, 1000);
+    },
+    actionFailed: function (source, target, reason) {
+        losses._STATUS_.loading = false;
+        losses._ELEMENTS_.indexForms.each(function () {
+            $(this).removeClass('loading');
+        });
 
-            $('.icon-spin2').remove();
+        if (losses._CACHE_.failedTimeoutEvent) {
+            clearTimeout(losses._CACHE_.failedTimeoutEvent);
+            losses._CACHE_.failedTimeoutEvent = false;
+        }
 
-            losses._ELEMENTS_.header.append('<i class="icon-cancel"></i>');
+        $('.icon-spin2').remove();
 
-            losses._CACHE_.failedTimeoutEvent = setTimeout(function () {
-                var targetIcon = $('.icon-cancel');
-                targetIcon.removeClass('pause')
-                    .addClass('up');
+        losses._ELEMENTS_.header.append('<i class="icon-cancel"></i>');
 
-                setTimeout(function () {
-                    targetIcon.remove();
-                }, 470);
-            }, 2000);
-
-            losses.warning(source, target, reason);
-        },
-        warning: function (source, target, text) {
-            var targetHeader = $('header>#' + source + '_form>h2') /*nxt line*/
-                , targetWarning = $('header>#' + source + '_form>.warning');
-
-            if (text) {
-                targetWarning.html(text);
-            }
-
-            if (losses._CACHE_.warningTimeoutEvent) {
-                clearTimeout(losses._CACHE_.warningTimeoutEvent);
-                losses._CACHE_.warningTimeoutEvent = false;
-            }
-
-            targetHeader.slideUp();
-            targetWarning.slideDown();
-
-            if (target) {
-                var targetElement = $('header>#' + source + '_form input[name=' + target + ']');
-
-                targetElement.addClass('highlight');
-            }
-
-            losses._CACHE_.warningTimeoutEvent = setTimeout(function () {
-                targetHeader.slideDown();
-                targetWarning.slideUp();
-                target && targetElement.removeClass('highlight');
-            }, 2000);
-        },
-        cpSwitch: function () {
-            var hiddenItem = $('.logo, #intro, .index_form')
-                , main = $('#main')
-                , waiting = true
-                , checkCount = 0
-                , intervalEvent;
-
-            hiddenItem.each(function () {
-                $(this).addClass('exit');
-            });
-
-            main.slideUp(500);
-            $('.blank').slideDown(500);
+        losses._CACHE_.failedTimeoutEvent = setTimeout(function () {
+            var targetIcon = $('.icon-cancel');
+            targetIcon.removeClass('pause')
+                .addClass('up');
 
             setTimeout(function () {
-                waiting = false;
-            }, 500);
+                targetIcon.remove();
+            }, 470);
+        }, 2000);
 
-            $.get('./cp.html', function (data) {
-                intervalEvent = setInterval(function () {
-                    if (!waiting) {
-                        clearInterval(intervalEvent);
+        losses.warning(source, target, reason);
+    },
+    warning: function (source, target, text) {
+        var targetHeader = $('header>#' + source + '_form>h2') /*nxt line*/
+            , targetWarning = $('header>#' + source + '_form>.warning');
 
-                        main.remove();
-                        hiddenItem.each(function () {
-                            $(this).remove();
+        if (text) {
+            targetWarning.html(text);
+        }
+
+        if (losses._CACHE_.warningTimeoutEvent) {
+            clearTimeout(losses._CACHE_.warningTimeoutEvent);
+            losses._CACHE_.warningTimeoutEvent = false;
+        }
+
+        targetHeader.slideUp();
+        targetWarning.slideDown();
+
+        if (target) {
+            var targetElement = $('header>#' + source + '_form input[name=' + target + ']');
+
+            targetElement.addClass('highlight');
+        }
+
+        losses._CACHE_.warningTimeoutEvent = setTimeout(function () {
+            targetHeader.slideDown();
+            targetWarning.slideUp();
+            target && targetElement.removeClass('highlight');
+        }, 2000);
+    },
+    cpSwitch: function () {
+        var hiddenItem = $('.logo, #intro, .index_form')
+            , main = $('#main')
+            , waiting = true
+            , checkCount = 0
+            , intervalEvent;
+
+        hiddenItem.each(function () {
+            $(this).addClass('exit');
+        });
+
+        main.slideUp(500);
+        $('.blank').slideDown(500);
+
+        setTimeout(function () {
+            waiting = false;
+        }, 500);
+
+        $.get('./cp.html', function (data) {
+            intervalEvent = setInterval(function () {
+                if (!waiting) {
+                    clearInterval(intervalEvent);
+
+                    main.remove();
+                    hiddenItem.each(function () {
+                        $(this).remove();
+                    });
+
+                    $('#custom_style').attr('href', 'styles/cp.css')
+                        .after('<link type="text/css" id="temp" rel="stylesheet" href="styles/index2cp.css"/>');
+
+                    var title = /<title>([\s\S]*?)<\/title>/gmi.exec(data)[1]
+                        , copyObject = $("body").html()
+                        , mainContent = /(<!--24RE9O--->[\s\S]*?<!--J7E0Q2-->)/gmi.exec(data)[1]
+                        , headerContent = /(<!--1AF4H7-->[\s\S]*?<!--T72AM2-->)/gmi.exec(data)[1];
+
+                    $('header').append(headerContent)
+                        .after(mainContent);
+                    $("title").html(title);
+
+                    $('.blank').slideUp(500);
+
+                    setTimeout(function () {
+                        $("#highlight,#main").each(function () {
+                            $(this).slideDown(500);
                         });
 
-                        $('#custom_style').attr('href', 'styles/cp.css')
-                            .after('<link type="text/css" id="temp" rel="stylesheet" href="styles/index2cp.css"/>');
+                        $('#temp').remove();
+                    }, 100);
 
-                        var title = /<title>([\s\S]*?)<\/title>/gmi.exec(data)[1]
-                            , copyObject = $("body").html()
-                            , mainContent = /(<!--24RE9O--->[\s\S]*?<!--J7E0Q2-->)/gmi.exec(data)[1]
-                            , headerContent = /(<!--1AF4H7-->[\s\S]*?<!--T72AM2-->)/gmi.exec(data)[1];
+                    //history.pushState(copyObject, title, 'cp.html');
+                } else {
+                    checkCount++;
+                }
+            }, 100);
 
-                        $('header').append(headerContent)
-                            .after(mainContent);
-                        $("title").html(title);
+        });
+    },
+    loading: function () {
+        losses._STATUS_.loading = true;
 
-                        $('.blank').slideUp(500);
+        losses._ELEMENTS_.inputs.each(function () {
+            $(this).attr('readonly', 'true');
+        });
 
-                        setTimeout(function () {
-                            $("#highlight,#main").each(function () {
-                                $(this).slideDown(500);
-                            });
+        losses._ELEMENTS_.indexForms.each(function () {
+            $(this).addClass('loading');
+        });
 
-                            $('#temp').remove();
-                        }, 100);
-
-                        //history.pushState(copyObject, title, 'cp.html');
-                    } else {
-                        checkCount++;
-                    }
-                }, 100);
-
-            });
-        },
-        loading: function () {
-            losses._STATUS_.loading = true;
-
-            losses._ELEMENTS_.inputs.each(function () {
-                $(this).attr('readonly', 'true');
-            });
-
-            losses._ELEMENTS_.indexForms.each(function () {
-                $(this).addClass('loading');
-            });
-
-            losses._ELEMENTS_.header.append('<i class="icon-spin2 animate-spin load_spiner"></i>');
-        },
-        test: function () {
-            losses.actionSuccess('账户注册完成，请检查确认注册邮件之后登陆。');
-        }
+        losses._ELEMENTS_.header.append('<i class="icon-spin2 animate-spin load_spiner"></i>');
+    },
+    test: function () {
+        losses.actionSuccess('账户注册完成，请检查确认注册邮件之后登陆。');
     }
-    ;
+}

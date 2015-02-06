@@ -125,7 +125,7 @@ header nav::after {
   height: 158px;
   text-align: center;
   position: absolute;
-  transition: all ease-in-out 0.5s;
+  transition: left ease-in-out 0.5s;
 }
 #intro h1 {
   font-size: 40px;
