@@ -69,7 +69,24 @@ $(document).ready(function () {
         }
     });
 
+    $('#login_form form').submit(function (event) {
+        losses.loading($(this));
+        setTimeout(function () {
+            losses.warning('login', 'username', '用户名错误！')
+        }, 3000);
 
+        event.preventDefault();
+    });
+
+    $('#register_form form').submit(function (event) {
+        losses.loading($(this));
+        setTimeout(function () {
+            losses.actionSuccess('账户注册完成，请检查确认注册邮件之后登陆。');
+
+            //losses.cpSwitch();
+        }, 3000);
+        event.preventDefault();
+    });
     $('.scheckbox').prepend('<i class="icon"></i>')
 });
 
@@ -90,20 +107,10 @@ var losses = {
 
         losses._ELEMENTS_.header.append('<i class="icon-ok"><span class="icon_text">' + hint + '</span></i>');
 
-        var okIcon = $('.icon-ok');
-
         losses._ELEMENTS_.indexForms.each(function () {
             $(this).removeClass('loading')
                 .addClass('finished');
         });
-
-        setTimeout(function () {
-            okIcon.addClass('pause');
-
-            setTimeout(function () {
-                okIcon.addClass('extend');
-            }, 100);
-        }, 450);
 
         setTimeout(function () {
             //跳转页面代码在这
@@ -187,35 +194,51 @@ var losses = {
             intervalEvent = setInterval(function () {
                 if (!waiting) {
                     clearInterval(intervalEvent);
+                    //跳页
+                    /*
+                     main.remove();
+                     hiddenItem.each(function () {
+                     $(this).remove();
+                     });
 
-                    main.remove();
-                    hiddenItem.each(function () {
-                        $(this).remove();
-                    });
+                     $('#custom_style').after('<link type="text/css" id="newStyle" rel="stylesheet" href="styles/cp.css"/>')
+                     .after('<link type="text/css" id="temp" rel="stylesheet" href="styles/index2cp.css"/>');
 
-                    $('#custom_style').attr('href', 'styles/cp.css')
-                        .after('<link type="text/css" id="temp" rel="stylesheet" href="styles/index2cp.css"/>');
+                     (function () {
+                     setTimeout(function () {
+                     $('link[rel="stylesheet"]').forEach(StyleFix.link);
+                     }, 10);
 
-                    var title = /<title>([\s\S]*?)<\/title>/gmi.exec(data)[1]
-                        , copyObject = $("body").html()
-                        , mainContent = /(<!--24RE9O--->[\s\S]*?<!--J7E0Q2-->)/gmi.exec(data)[1]
-                        , headerContent = /(<!--1AF4H7-->[\s\S]*?<!--T72AM2-->)/gmi.exec(data)[1];
+                     document.addEventListener('DOMContentLoaded', StyleFix.process, false);
+                     })();
 
-                    $('header').append(headerContent)
-                        .after(mainContent);
-                    $("title").html(title);
+                     function $(expr, con) {
+                     return [].slice.call((con || document).querySelectorAll(expr));
+                     }
 
-                    $('.blank').slideUp(500);
 
-                    setTimeout(function () {
-                        $("#highlight,#main").each(function () {
-                            $(this).slideDown(500);
-                        });
+                     var title = /<title>([\s\S]*?)<\/title>/gmi.exec(data)[1]
+                     , copyObject = $("body").html()
+                     , mainContent = /(<!--24RE9O--->[\s\S]*?<!--J7E0Q2-->)/gmi.exec(data)[1]
+                     , headerContent = /(<!--1AF4H7-->[\s\S]*?<!--T72AM2-->)/gmi.exec(data)[1];
 
-                        $('#temp').remove();
-                    }, 100);
+                     $('header').append(headerContent)
+                     .after(mainContent);
+                     $("title").html(title);
 
-                    //history.pushState(copyObject, title, 'cp.html');
+                     $('.blank').slideUp(500);
+
+                     setTimeout(function () {
+                     $("#highlight,#main").each(function () {
+                     $(this).slideDown(500);
+                     });
+
+                     $('#temp').remove();
+                     }, 100);
+
+                     //history.pushState(copyObject, title, 'cp.html');
+
+                     */
                 } else {
                     checkCount++;
                 }
@@ -223,16 +246,17 @@ var losses = {
 
         });
     },
-    loading: function () {
+    loading: function (target) {
+        var targetForm = target.parent();
+
         losses._STATUS_.loading = true;
 
         losses._ELEMENTS_.inputs.each(function () {
             $(this).attr('readonly', 'true');
         });
 
-        losses._ELEMENTS_.indexForms.each(function () {
-            $(this).addClass('loading');
-        });
+        targetForm.removeClass('flow_up')
+            .addClass('loading');
 
         losses._ELEMENTS_.header.append('<i class="icon-spin2 animate-spin load_spiner"></i>');
     },

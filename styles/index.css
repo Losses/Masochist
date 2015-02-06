@@ -66,7 +66,7 @@
     opacity: 1;
   }
   to {
-    margin-top: 0px;
+    margin-top: 0;
     visibility: hidden;
     opacity: 0;
   }
@@ -93,6 +93,36 @@
     margin-top: 0;
     visibility: visible;
     opacity: 1;
+  }
+}
+@keyframes flow_down_i_e {
+  0% {
+    margin-top: -40px;
+    visibility: hidden;
+    opacity: 0;
+    margin-left: -30px;
+    width: 70px;
+  }
+  75% {
+    margin-top: 0;
+    visibility: visible;
+    opacity: 1;
+    margin-left: -30px;
+    width: 70px;
+  }
+  78% {
+    margin-top: 0;
+    visibility: visible;
+    opacity: 1;
+    margin-left: -30px;
+    width: 70px;
+  }
+  100% {
+    margin-top: 0;
+    visibility: visible;
+    opacity: 1;
+    margin-left: -165px;
+    width: 400px;
   }
 }
 @keyframes loading_shine {
@@ -143,21 +173,14 @@ header .icon-spin2::before,
 header .icon-ok::before {
   font-size: 60px;
 }
-header .icon-ok,
-header .icon-cancel {
+header .icon-ok {
   width: 70px;
   opacity: 0;
   overflow: hidden;
-  animation: flow_down_i 500ms ease-in-out forwards;
+  animation: flow_down_i_e 600ms ease-in-out forwards;
 }
-header .icon-ok.flow_up,
-header .icon-cancel.flow_up {
+header .icon-ok.flow_up {
   animation: flow_up_i 500ms ease-in-out forwards;
-}
-header .icon-ok.extend,
-header .icon-cancel.extend {
-  margin-left: -165px;
-  width: 400px;
 }
 header .icon_text {
   top: -10px;
@@ -215,6 +238,8 @@ header .index_form {
   transition: all ease-in-out 0.5s;
 }
 header .index_form.loading {
+  visibility: visible !important;
+  opacity: 1;
   animation: loading_shine 400ms ease-in-out infinite alternate;
 }
 header .index_form.finished {
