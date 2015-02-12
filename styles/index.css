@@ -514,4 +514,8 @@ header form .scheckbox input {
   .logo {
     right: -1000px !important;
   }
+  .icon-spin2 {
+    left: 50% !important;
+    margin-left: -45px !important;
+  }
 }
