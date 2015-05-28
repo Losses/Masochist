@@ -137,6 +137,13 @@ html,
 body {
   height: 100%;
 }
+.clear::after {
+  height: 0;
+  width: 0;
+  content: "\feff";
+  display: block;
+  clear: both;
+}
 header {
   min-height: 500px;
   position: relative;
@@ -518,4 +525,22 @@ header form .scheckbox input {
     left: 50% !important;
     margin-left: -45px !important;
   }
+}
+header.index #user_info_warp {
+  height: 0;
+  width: 0;
+  opacity: 0.3;
+  visibility: hidden;
+  transform: scale(0.6);
+}
+header.panel {
+  min-height: 200px;
+}
+header.panel .logo {
+  right: -1000px;
+}
+header.panel #intro,
+header.panel .index_form {
+  opacity: 0 !important;
+  visibility: hidden !important;
 }

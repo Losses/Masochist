@@ -1,17 +1,21 @@
 <!DOCTYPE html>
-<html>
-<head lang="en">
+<html data-ng-app='rM' lang="zh">
+<head lang="zh">
     <meta charset="UTF-8">
     <meta name="theme-color" content="#5c00ff">
     <meta name="viewport" content="width=500, width=device-width, initial-scale=1, maximum-scale=1">
     <link type="text/css" rel="stylesheet" href="styles/main.css"/>
+    <link type="text/css" rel="stylesheet" href="styles/cp.css"/>
     <link type="text/css" rel="stylesheet" id="custom_style" href="styles/index.css"/>
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/angular-route.min.js"></script>
+    <script src="scripts/angular-animate.min.js"></script>
     <script src="scripts/jquery.js"></script>
     <script src="scripts/prefixfree.min.js"></script>
     <title>轨道炮 piu——</title>
 </head>
 <body>
-<header>
+<header data-ng-controller="headerCtrl" data-ng-class="getClass()">
     <i class="logo right"></i>
     <nav>
         <i class="highlight"></i>
@@ -69,39 +73,28 @@
             <button class="cancel right">取消</button>
         </form>
     </div>
+
+    <div id="user_info_warp">
+        <div id="user_info" class="clear">
+            <div class="left">
+                <img class="face" src="http://dummyimage.com/120x120">
+            </div>
+            <div class=" user_detail left">
+                <div class="name_panel">
+                    <span class="name">吱吱吱</span>
+                    <span class="user_type">BAKA</span>
+                </div>
+                <div>
+                    <span class="icon-chart-pie" title="剩余流量">10</span>
+                    <span class="icon-money" title="账户余额">20</span>
+                    <a class="button" href="#">充值</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </header>
-<section id="main">
-    <ul class="spec clear">
-        <li class="icon-fast left">
-            <div>
-                <p class="title">快速</p>
+<section id="main" data-ng-view></section>
 
-                <p class="intro">优选快速线路，多条途径，多种选择，带你起飞 ヽ(✿ﾟ▽ﾟ)ノ</p>
-            </div>
-        </li>
-        <li class="icon-mp left">
-            <div>
-                <p class="title">省心</p>
-
-                <p class="intro">你需要的我们已经为您准备好，无须四处约〇 d(`･∀･)b</p>
-            </div>
-        </li>
-        <li class="icon-ways left">
-            <div>
-                <p class="title">选择</p>
-
-                <p class="intro">多种姿势供您选择，满足多种客户的花样需求 (ﾉ∀`*)</p>
-            </div>
-        </li>
-        <li class="icon-nothing left">
-            <div>
-                <p class="title">探索</p>
-
-                <p class="intro">我们大家来捉鬼嘿！我们大家来捉鬼！ (*´▽`*)</p>
-            </div>
-        </li>
-    </ul>
-</section>
 <section class="blank"></section>
 <footer>
     <p>&copy; 2015 somebody</p>

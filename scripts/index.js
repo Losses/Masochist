@@ -42,7 +42,7 @@ $(document).ready(function () {
         intro.addClass('flow_down')
             .removeClass('flow_up');
 
-        var loginForm  =  $('#login_form');
+        var loginForm = $('#login_form');
 
         if (loginForm.hasClass('flow_up') || loginForm.hasClass('paused')) {
             hideForm('#login_form');
@@ -89,7 +89,17 @@ $(document).ready(function () {
         }, 3000);
         event.preventDefault();
     });
-    $('.scheckbox').prepend('<i class="icon"></i>')
+    $('.scheckbox').prepend('<i class="icon"></i>');
+
+    $('body').delegate('.payment-input', 'change', function () {
+        $('.payment-input').each(function () {
+            var iconElement = $(this).parents('payment-icon');
+            iconElement.removeClass('selected');
+            if ($(this).is(':checked')) {
+                iconElement.addClass('selected');
+            }
+        })
+    });
 });
 
 var losses = {
@@ -274,4 +284,4 @@ var losses = {
     test: function () {
         losses.actionSuccess('账户注册完成，请检查确认注册邮件之后登陆。');
     }
-}
+};

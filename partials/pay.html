@@ -1,0 +1,52 @@
+<form class="form-inline" id="payment_form"
+      action="https://railgun.ac/payments" method="POST">
+    <h2>收银台</h2>
+
+    <div class="clear money">
+        <div class="left recharge_money">
+            <label for="amount">充值金额</label>
+
+            <div class="input_warp">
+                <input type="text" class="big_text" id="amount" name="amount" placeholder="">
+            </div>
+        </div>
+
+        <div class="left money_left">
+            <label>账户余额</label>
+            <span class="big_text">¥0.00</span>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <h3>支付方式</h3>
+
+        <div class="payment_group">
+            <payment-icon value="paypal" model="ppl" data-pay-icon="images/pay/paypal.png"></payment-icon>
+            <payment-icon value="unionpay" model="ppl" data-pay-icon="images/pay/unionpay.png"></payment-icon>
+        </div>
+
+        <p class="help-block clear" data-ng-class="ppl">
+            注: PayPal 会向我们收取高昂的手续费，您的 PayPal 付款将会以 1 USD = 6 RMB 的比例加入账户余额。
+        </p>
+
+        <div class="payment_group">
+            <payment-icon value="ABC" model="ppl" data-pay-icon="images/pay/ABC.png"></payment-icon>
+            <payment-icon value="BOB" model="ppl" data-pay-icon="images/pay/BOB.png"></payment-icon>
+            <payment-icon value="BOC" model="ppl" data-pay-icon="images/pay/BOC.png"></payment-icon>
+            <payment-icon value="CCB" model="ppl" data-pay-icon="images/pay/CCB.png"></payment-icon>
+            <payment-icon value="CEB" model="ppl" data-pay-icon="images/pay/CEB.png"></payment-icon>
+            <payment-icon value="CIB" model="ppl" data-pay-icon="images/pay/CIB.png"></payment-icon>
+            <payment-icon value="CITIC" model="ppl" data-pay-icon="images/pay/CITIC.png"></payment-icon>
+            <payment-icon value="CMB" model="ppl" data-pay-icon="images/pay/CMB.png"></payment-icon>
+            <payment-icon value="CMBC" model="ppl" data-pay-icon="images/pay/CMBC.png"></payment-icon>
+            <payment-icon value="CIMM" model="ppl" data-pay-icon="images/pay/CIMM.png"></payment-icon>
+            <payment-icon value="GDB" model="ppl" data-pay-icon="images/pay/GDB.png"></payment-icon>
+            <payment-icon value="ICBC" model="ppl" data-pay-icon="images/pay/ICBC.png"></payment-icon>
+            <payment-icon value="PAB" model="ppl" data-pay-icon="images/pay/PAB.png"></payment-icon>
+            <payment-icon value="POSTGC" model="ppl" data-pay-icon="images/pay/POSTGC.png"></payment-icon>
+            <payment-icon value="SPDB" model="ppl" data-pay-icon="images/pay/SPDB.png"></payment-icon>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-default">提交</button>
+</form>
