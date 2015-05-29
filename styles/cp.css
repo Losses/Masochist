@@ -334,6 +334,15 @@ header #user_info .user_detail .icon-money::after {
   display: block;
   position: absolute;
 }
+.back_to_panel a:link,
+.back_to_panel a:visited,
+.back_to_panel a:active {
+  margin: 10px 50px;
+  color: #140f1d;
+  font-size: 14px;
+  text-decoration: none;
+  display: block;
+}
 @media only screen and (max-width: 820px) {
   header {
     height: 300px;

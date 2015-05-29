@@ -2,55 +2,45 @@
  * Created by Don on 1/31/2015.
  */
 
-var globalAngular = {};
+var rM = {
+    config: {                                                   //railgun-Masochist Angular部分配置选项
+        indexRouteConfig: {                                     //首页路由统一配置
+            templateUrl: 'partials/index.html',
+            controller: 'postCtrl'
+        },
+        panelRouteConfig: {                                     //控制面板路由统一配置
+            templateUrl: 'partials/panel.html',
+            controller: 'panelCtrl'
+        },
+        pageRouteConfig: {                                       //自定义页面路由统一配置
+            templateUrl: 'partials/page.html',
+            controller: 'pageCtrl'
+        }
+    }
+};
 
 angular.module('rM', ['ngRoute', 'ngAnimate']).
 
     config(['$controllerProvider', '$routeProvider',
         function ($controllerProvider, $routeProvider) {
             $routeProvider.
-                when('/', {
-                    templateUrl: 'partials/index.html',
-                    controller: 'postCtrl'
-                }).when('/login', {
-                    templateUrl: 'partials/index.html',
-                    controller: 'postCtrl'
-                }).when('/register', {
-                    templateUrl: 'partials/index.html',
-                    controller: 'postCtrl'
-                }).when('/register/:code', {
-                    templateUrl: 'partials/index.html',
-                    controller: 'postCtrl'
-                }).
-                when('/panel', {
-                    templateUrl: 'partials/panel.html',
-                    controller: 'panelCtrl'
-                }).
-                when('/panel/:ndAction', {
-                    templateUrl: 'partials/panel.html',
-                    controller: 'panelCtrl'
-                }).
-                when('/panel/:ndAction/:rdAction', {
-                    templateUrl: 'partials/panel.html',
-                    controller: 'panelCtrl'
-                }).
-                when('/panel/:ndAction/:rdAction/:thAction', {
-                    templateUrl: 'partials/panel.html',
-                    controller: 'panelCtrl'
-                }).
-                when('/panel/:ndAction/:rdAction/:thAction/:fiAction', {
-                    templateUrl: 'partials/panel.html',
-                    controller: 'panelCtrl'
-                }).
-                when('/:customCommand', {
-                    templateUrl: 'partials/page.html',
-                    controller: 'pageCtrl'
-                }).
+                when('/', rM.config.indexRouteConfig).
+                when('/login', rM.config.indexRouteConfig).
+                when('/register', rM.config.indexRouteConfig).
+                when('/register/:code', rM.config.indexRouteConfig).
+                when('/panel', rM.config.panelRouteConfig).
+                when('/panel/pay', rM.config.panelRouteConfig).
+                when('/panel/help', rM.config.panelRouteConfig).
+                when('/panel/:ndAction/:rdAction', rM.config.panelRouteConfig).
+                when('/panel/:ndAction/:rdAction/:thAction', rM.config.panelRouteConfig).
+                when('/panel/:ndAction/:rdAction/:thAction/:fiAction', rM.config.panelRouteConfig).
+                when('/panel/:ndAction', rM.config.pageRouteConfig).
+                when('/:customCommand', rM.config.pageRouteConfig).
                 otherwise({redirectTo: '/'})
         }]).
 
     controller('postCtrl', function ($location) {
-        globalAngular.$location = $location;
+        //卖个萌
     }).
     controller('panelCtrl', function ($scope, $location, $http) {
         $scope.parseLocation = function () {
@@ -133,29 +123,39 @@ angular.module('rM', ['ngRoute', 'ngAnimate']).
     }).
     controller('pageCtrl', function ($location, $scope, $http) {
         var location = $location.path().split('/')[1];
-
         $scope.pageContent = 'loading...';
+        $scope.isPanel = (location === 'panel');
 
-        $http.get('dbs/page/context.json').
-            success(function (data) {
-                if (data[location]) {
-                    var fileName = data[location].fileName;
-                    $http.get('dbs/page/' + fileName).
-                        success(function (fileContent) {
-                            var parseType = data[location]['parse'] ? data[location]['parse'] : 'markdown';
-                            $scope.pageContent = (parseType === 'markdown') ? markdown.toHTML(fileContent) : fileContent;
-                        }).
-                        error(function () {
-                            $scope.pageContent = 'error, cant get the page file.'
-                        })
-                } else {
-                    $scope.pageContent = 'error, page not found'
+        if ($scope.isPanel) {
+            $http.get('partials/panel/' + $location.path().split('/')[2] + '.html').
+                success(function (data) {
+                    $scope.pageContent = data;
+                }).
+                error(function () {
+                    $scope.pageContent = 'error, cant get the page file.'
+                })
+        } else {
+            $http.get('dbs/page/context.json').
+                success(function (data) {
+                    if (data[location]) {
+                        var fileName = data[location].fileName;
+                        $http.get('dbs/page/' + fileName).
+                            success(function (fileContent) {
+                                var parseType = data[location]['parse'] ? data[location]['parse'] : 'markdown';
+                                $scope.pageContent = (parseType === 'markdown') ? markdown.toHTML(fileContent) : fileContent;
+                            }).
+                            error(function () {
+                                $scope.pageContent = 'error, cant get the page file.'
+                            })
+                    } else {
+                        $scope.pageContent = 'error, page not found.'
+                    }
                 }
-            }
-        ).
-            error(function () {
-                $scope.pageContent = 'error, cant get the context.'
-            });
+            ).
+                error(function () {
+                    $scope.pageContent = 'error, cant get the context.'
+                });
+        }
     }).
 
     directive('paymentIcon', function () {
