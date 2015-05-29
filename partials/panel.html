@@ -40,4 +40,9 @@
     </ul>
 </div>
 
-<div id="pay" data-ng-include="'partials/pay.html'"></div>
+<a href="#/panel" class="lightbox" data-ng-if="checkLocation('pay', 1) || checkLocation('help', 1)">
+    magicalLightboxByLossesDon
+</a>
+
+<div id="pay" class="center_card" data-ng-include="'partials/pay.html'" data-ng-if="checkLocation('pay', 1)"></div>
+<div id="help" class="center_card" data-ng-include="'partials/help.html'" data-ng-if="checkLocation('help', 1)"></div>

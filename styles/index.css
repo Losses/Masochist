@@ -151,7 +151,7 @@ header {
 header .logo {
   width: 500px;
   height: 500px;
-  right: 100px;
+  right: -1000px;
   bottom: 0;
   background-image: url('../images/title.png');
   background-repeat: no-repeat;
@@ -164,6 +164,11 @@ header .logo {
 header .logo.exit {
   left: auto;
   right: -500px;
+}
+header .logo #intro,
+header .logo .index_form {
+  opacity: 0 !important;
+  visibility: hidden !important;
 }
 header .icon-spin2,
 header .icon-ok {
@@ -526,21 +531,60 @@ header form .scheckbox input {
     margin-left: -45px !important;
   }
 }
-header.index #user_info_warp {
-  height: 0;
-  width: 0;
-  opacity: 0.3;
-  visibility: hidden;
-  transform: scale(0.6);
+#page_title_warp {
+  top: 60px;
+  left: -1000px;
+  position: absolute;
+  transition: all 300ms;
+}
+#page_title_warp p {
+  font-size: 14px;
+  line-height: 2em;
+}
+header.index .logo {
+  right: 100px;
 }
 header.panel {
   min-height: 200px;
 }
-header.panel .logo {
-  right: -1000px;
+header.panel #user_info_warp {
+  height: auto;
+  width: auto;
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
 }
 header.panel #intro,
 header.panel .index_form {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+header.page {
+  min-height: 200px;
+}
+header.page #page_title_warp {
+  left: 50px;
+}
+@media only screen and (max-width: 930px) {
+  header.page {
+    min-height: 350px;
+  }
+  header.page #page_title_warp {
+    top: 170px;
+    left: 50%;
+    width: 900px;
+    margin-left: -465px;
+    position: absolute;
+  }
+  header.page #page_title_warp * {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block;
+    text-align: center;
+  }
+}
+header.page #intro,
+header.page .index_form {
   opacity: 0 !important;
   visibility: hidden !important;
 }

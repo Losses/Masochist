@@ -1,0 +1,10 @@
+<ul class="help_context">
+    <li
+            data-ng-repeat="button in helpContext[location[2]]"
+            data-ng-class="{true: 'green', false: 'gray'}[location[3] === removeMd(button.fileName)]">
+        <a href="#/panel/help/{{location[2]}}/{{removeMd(button.fileName)}}">{{button.name}}</a>
+    </li>
+</ul>
+<div class="help_content_warp">
+    <article class="help_content" data-ng-bind-html="helpContent | trustHtml"></article>
+</div>

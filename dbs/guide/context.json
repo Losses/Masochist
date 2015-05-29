@@ -1,0 +1,14 @@
+{
+  "windows": [
+    {
+      "name": "HTTP代理",
+      "fileName": "https.md"
+    },{
+      "name": "自动配置脚本",
+      "fileName": "pac.md"
+    },{
+      "name": "常规VPN",
+      "fileName": "vpn.md"
+    }
+  ]
+}

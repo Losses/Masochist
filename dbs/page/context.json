@@ -1,0 +1,8 @@
+{
+  "tos": {
+    "name": "服务条款与隐私协议",
+    "subtitle": "简单明了的了解我们双方的责权关系。",
+    "fileName": "tos.html",
+    "parse": "html"
+  }
+}
