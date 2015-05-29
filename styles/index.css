@@ -544,6 +544,13 @@ header form .scheckbox input {
 header.index .logo {
   right: 100px;
 }
+#user_info_warp {
+  height: 0;
+  width: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.4);
+}
 header.panel {
   min-height: 200px;
 }

@@ -1,12 +1,6 @@
-@import url(webfonts/fontello.css);
 header #user_info_warp {
   transition: all 300ms;
   overflow: visible;
-  height: 0;
-  width: 0;
-  opacity: 0.3;
-  visibility: hidden;
-  transform: scale(0.6);
 }
 header #user_info {
   width: 336px;

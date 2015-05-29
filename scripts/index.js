@@ -4,52 +4,10 @@
 $(document).ready(function () {
     var intro = $('#intro');
 
-    function showForm(type) {
-        var loginForm = $(type);
-
-        intro.addClass('flow_up')
-            .removeClass('flow_down');
-
-        loginForm.addClass('flow_up')
-            .removeClass('flow_down');
-    }
-
-    function hideForm(type) {
-        var loginForm = $(type);
-
-        loginForm.removeClass('flow_up paused')
-            .addClass('flow_down');
-
-    }
-
-    $('#login').click(function (event) {
-        showForm('#login_form');
-
-        event.preventDefault();
-    });
-
-    $('#register').click(function (event) {
-        showForm('#register_form');
-
-        event.preventDefault();
-    });
-
     $('.cancel').click(function (event) {
         if (losses._STATUS_.loading) {
             return false;
         }
-
-        intro.addClass('flow_down')
-            .removeClass('flow_up');
-
-        var loginForm = $('#login_form');
-
-        if (loginForm.hasClass('flow_up') || loginForm.hasClass('paused')) {
-            hideForm('#login_form');
-        } else {
-            hideForm('#register_form');
-        }
-
         event.preventDefault();
     });
 

@@ -12,6 +12,15 @@ angular.module('rM', ['ngRoute', 'ngAnimate']).
                 when('/', {
                     templateUrl: 'partials/index.html',
                     controller: 'postCtrl'
+                }).when('/login', {
+                    templateUrl: 'partials/index.html',
+                    controller: 'postCtrl'
+                }).when('/register', {
+                    templateUrl: 'partials/index.html',
+                    controller: 'postCtrl'
+                }).when('/register/:code', {
+                    templateUrl: 'partials/index.html',
+                    controller: 'postCtrl'
                 }).
                 when('/panel', {
                     templateUrl: 'partials/panel.html',
@@ -40,8 +49,44 @@ angular.module('rM', ['ngRoute', 'ngAnimate']).
                 otherwise({redirectTo: '/'})
         }]).
 
-    controller('postCtrl', function () {
-        console.log('!');
+    controller('postCtrl', function ($location) {
+        var currentPath = $location.path() /*nxt line*/
+            , intro = $('#intro');
+
+        function showForm(type) {
+            var loginForm = $(type);
+
+            intro.addClass('flow_up')
+                .removeClass('flow_down');
+
+            loginForm.addClass('flow_up')
+                .removeClass('flow_down');
+        }
+
+        function hideForm(type) {
+            var loginForm = $(type);
+
+            loginForm.removeClass('flow_up paused')
+                .addClass('flow_down');
+        }
+
+        var loginForm = $('#login_form');
+
+        if (currentPath.match(/^\/login\/?/) !== null) {
+            showForm('#login_form');
+            hideForm('#register_form');
+        }
+        else if (currentPath.match(/^\/register\/?/) !== null) {
+            showForm('#register_form');
+            hideForm('#login_form');
+        }
+        else if (currentPath.match(/^\/?/) !== null) {
+            intro.addClass('flow_down')
+                .removeClass('flow_up');
+
+            hideForm('#register_form');
+            hideForm('#login_form');
+        }
     }).
     controller('panelCtrl', function ($scope, $location, $http) {
         $scope.parseLocation = function () {
@@ -86,7 +131,7 @@ angular.module('rM', ['ngRoute', 'ngAnimate']).
             var currentPath = $location.path();
 
             var headerClass;
-            if (currentPath === '/')
+            if (currentPath.match(/^\/login|^\/register|^\/$/) !== null)
                 headerClass = 'index';
             else if (currentPath.match(/^\/panel/) !== null)
                 headerClass = 'panel';
