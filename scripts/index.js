@@ -48,7 +48,6 @@ $(document).ready(function () {
     var timeoutId;
 
     nav.find("li").mouseenter(function () {
-        console.log('11');
 
         var $this = $(this);
 

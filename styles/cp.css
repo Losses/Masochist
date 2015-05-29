@@ -129,6 +129,10 @@ header #user_info .user_detail .icon-money::after {
   transition: all 0.2s ease-in-out;
   -moz-transition: all ease-in-out 0.2s;
 }
+#main ul.clear li a:link,
+#main ul.clear li a:visited {
+  text-decoration: none;
+}
 #main .lightbox {
   top: 0;
   left: 0;

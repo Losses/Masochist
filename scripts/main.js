@@ -91,6 +91,21 @@ angular.module('rM', ['ngRoute', 'ngAnimate']).
         }
     }).
     controller('headerCtrl', function ($scope, $location, $routeParams) {
+        function indexStatus() {
+            var path = $location.path();
+            if (path.match(/^\/login\/?/) !== null)
+                $scope.indexStatus = 'login';
+            else if (path.match(/^\/register\/?/) !== null)
+                $scope.indexStatus = 'register';
+            else if (path.match(/^\/?/) !== null)
+                $scope.indexStatus = 'intro';
+
+            if ($routeParams.code)
+                $scope.promoCode = $routeParams.code;
+            else
+                $scope.promoCode = '';
+        }
+
         $scope.getClass = function () {
             var currentPath = $location.path();
 
@@ -102,18 +117,7 @@ angular.module('rM', ['ngRoute', 'ngAnimate']).
             else
                 headerClass = 'page';
 
-            if (currentPath.match(/^\/login\/?/) !== null)
-                $scope.indexStatus = 'login';
-            else if (currentPath.match(/^\/register\/?/) !== null)
-                $scope.indexStatus = 'register';
-            else if (currentPath.match(/^\/?/) !== null)
-                $scope.indexStatus = 'intro';
-
-            if ($routeParams.code)
-                $scope.promoCode = $routeParams.code;
-            else
-                $scope.promoCode = '';
-
+            indexStatus();
             return headerClass;
         };
 
