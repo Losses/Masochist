@@ -17,12 +17,15 @@
 <body>
 <header data-ng-controller="headerCtrl" data-ng-class="getClass()">
     <i class="logo right"></i>
+
     <nav>
         <i class="highlight"></i>
-        <li class="nav_item a"><a href="#">首页</a></li>
-        <li class="nav_item b"><a href="#">手册</a></li>
-        <li class="nav_item c"><a href="#">动态</a></li>
-        <li class="nav_item d"><a href="#">关于</a></li>
+        <ul>
+            <li class="nav_item a"><a href="#/">首页</a></li>
+            <li class="nav_item b"><a href="#/">手册</a></li>
+            <li class="nav_item c"><a href="#/">动态</a></li>
+            <li class="nav_item d"><a href="#/">关于</a></li>
+        </ul>
     </nav>
 
     <div id="intro">
@@ -31,8 +34,8 @@
         <p class="subtitle">大声呼喊，世界你好</p>
 
         <div class="button_group clear">
-            <a href="#" id="login">登陆</a>
-            <a href="#" id="register">注册</a>
+            <a href="#/login" id="login">登陆</a>
+            <a href="#/register" id="register">注册</a>
         </div>
     </div>
 

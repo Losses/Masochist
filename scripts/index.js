@@ -8,6 +8,8 @@ $(document).ready(function () {
         if (losses._STATUS_.loading) {
             return false;
         }
+
+        globalAngular.$location.path('#/');
         event.preventDefault();
     });
 
@@ -48,6 +50,32 @@ $(document).ready(function () {
         event.preventDefault();
     });
     $('.scheckbox').prepend('<i class="icon"></i>');
+
+    var body = $(document.body);
+    var highlight = $(".highlight");
+    var nav = $("header > nav");
+    var timeoutId;
+
+    nav.find("li").mouseenter(function () {
+        console.log('11');
+
+        var $this = $(this);
+
+        if (timeoutId)
+            clearTimeout(timeoutId);
+
+        highlight.css("left", $this.position().left).width($this.width());
+
+        if (body.hasClass("touch_screen")) {
+            timeoutId = setTimeout(function () {
+                highlight.css("left", 1000);
+            }, 500);
+        }
+    });
+    nav.mouseleave(function () {
+        if (!body.hasClass("touch_screen"))
+            highlight.css("left", 1000);
+    });
 
     $('body').delegate('.payment-input', 'change', function () {
         $('.payment-input').each(function () {

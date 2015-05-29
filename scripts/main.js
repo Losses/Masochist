@@ -2,7 +2,7 @@
  * Created by Don on 1/31/2015.
  */
 
-var a;
+var globalAngular = {};
 
 angular.module('rM', ['ngRoute', 'ngAnimate']).
 
@@ -50,6 +50,8 @@ angular.module('rM', ['ngRoute', 'ngAnimate']).
         }]).
 
     controller('postCtrl', function ($location) {
+        globalAngular.$location = $location;
+
         var currentPath = $location.path() /*nxt line*/
             , intro = $('#intro');
 

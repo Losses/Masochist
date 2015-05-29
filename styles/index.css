@@ -556,7 +556,6 @@ header.panel {
 }
 header.panel #user_info_warp {
   height: auto;
-  width: auto;
   opacity: 1;
   visibility: visible;
   transform: scale(1);
