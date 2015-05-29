@@ -99,6 +99,7 @@ header nav li a:visited {
   display: block;
   transform: skew(22.5deg);
   padding: 20px 30px;
+  border: 0;
 }
 @media only screen and (max-width: 530px) {
   header nav li a:link,
@@ -205,19 +206,13 @@ footer a:hover {
     margin-right: 0;
     padding-right: 0;
     transform: skew(0deg);
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    flex-flow: row;
   }
   header nav * {
     transform: skew(0deg);
   }
   header nav li {
-    padding: 15px 0 15px 0;
-    flex: 1;
+    width: 25%;
+    padding: 0;
     text-align: center;
   }
   header nav .highlight {

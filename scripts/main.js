@@ -51,44 +51,6 @@ angular.module('rM', ['ngRoute', 'ngAnimate']).
 
     controller('postCtrl', function ($location) {
         globalAngular.$location = $location;
-
-        var currentPath = $location.path() /*nxt line*/
-            , intro = $('#intro');
-
-        function showForm(type) {
-            var loginForm = $(type);
-
-            intro.addClass('flow_up')
-                .removeClass('flow_down');
-
-            loginForm.addClass('flow_up')
-                .removeClass('flow_down');
-        }
-
-        function hideForm(type) {
-            var loginForm = $(type);
-
-            loginForm.removeClass('flow_up paused')
-                .addClass('flow_down');
-        }
-
-        var loginForm = $('#login_form');
-
-        if (currentPath.match(/^\/login\/?/) !== null) {
-            showForm('#login_form');
-            hideForm('#register_form');
-        }
-        else if (currentPath.match(/^\/register\/?/) !== null) {
-            showForm('#register_form');
-            hideForm('#login_form');
-        }
-        else if (currentPath.match(/^\/?/) !== null) {
-            intro.addClass('flow_down')
-                .removeClass('flow_up');
-
-            hideForm('#register_form');
-            hideForm('#login_form');
-        }
     }).
     controller('panelCtrl', function ($scope, $location, $http) {
         $scope.parseLocation = function () {
@@ -128,7 +90,7 @@ angular.module('rM', ['ngRoute', 'ngAnimate']).
                 })
         }
     }).
-    controller('headerCtrl', function ($scope, $location) {
+    controller('headerCtrl', function ($scope, $location, $routeParams) {
         $scope.getClass = function () {
             var currentPath = $location.path();
 
@@ -140,8 +102,30 @@ angular.module('rM', ['ngRoute', 'ngAnimate']).
             else
                 headerClass = 'page';
 
+            if (currentPath.match(/^\/login\/?/) !== null)
+                $scope.indexStatus = 'login';
+            else if (currentPath.match(/^\/register\/?/) !== null)
+                $scope.indexStatus = 'register';
+            else if (currentPath.match(/^\/?/) !== null)
+                $scope.indexStatus = 'intro';
+
+            if ($routeParams.code)
+                $scope.promoCode = $routeParams.code;
+            else
+                $scope.promoCode = '';
+
             return headerClass;
         };
+
+        $scope.cancelInput = function (event) {
+            if (losses._STATUS_.loading)
+                return false;
+
+            $location.path('./#/');
+            $scope.getClass();
+
+            event.preventDefault();
+        }
     }).
     controller('pageCtrl', function ($location, $scope, $http) {
         var location = $location.path().split('/')[1];

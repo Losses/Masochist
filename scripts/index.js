@@ -4,15 +4,6 @@
 $(document).ready(function () {
     var intro = $('#intro');
 
-    $('.cancel').click(function (event) {
-        if (losses._STATUS_.loading) {
-            return false;
-        }
-
-        globalAngular.$location.path('#/');
-        event.preventDefault();
-    });
-
     $('input[type=checkbox]').on('change', function (event) {
         if (losses._STATUS_.loading) {
             event.preventDefault();

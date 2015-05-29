@@ -91,6 +91,7 @@ header {
                     display: block;
                     transform: skew(22.5deg);
                     padding: 20px 30px;
+                    border: 0;
 
                     @media only screen and (max-width: 530px) {
                         transform: skew(0);
@@ -207,15 +208,13 @@ footer {
             margin-right: 0;
             padding-right: 0;
             transform: skew(0deg);
-            .display_flex;
-            flex-flow: row;
 
             * {
                 transform: skew(0deg);
             }
             li {
-                padding: 15px 0 15px 0;
-                flex: 1;
+                width: 25%;
+                padding: 0;
                 text-align: center;
             }
             .highlight {

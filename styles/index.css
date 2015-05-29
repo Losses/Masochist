@@ -202,10 +202,10 @@ header #intro {
   top: 50%;
   margin: -79px 0 0 50px;
 }
-header #intro.flow_up {
+header #intro.ng-leave {
   animation: flow_up 600ms ease-in-out forwards;
 }
-header #intro.flow_down {
+header #intro.ng-enter {
   margin-top: -200px;
   visibility: hidden;
   opacity: 0;
@@ -280,29 +280,27 @@ header .index_form .warning {
 header #login_form {
   margin-top: -111px;
   height: 222px;
-  visibility: hidden;
 }
-header #login_form.flow_up {
+header #login_form.ng-enter {
   margin-top: 0;
   visibility: hidden;
   opacity: 0;
   animation: flow_up_l 600ms ease-in-out 400ms forwards;
 }
-header #login_form.flow_down {
+header #login_form.ng-leave {
   animation: flow_down_l 600ms ease-in-out forwards;
 }
 header #register_form {
   margin-top: -171px;
   height: 342px;
-  visibility: hidden;
 }
-header #register_form.flow_up {
+header #register_form.ng-enter {
   margin-top: 0;
   visibility: hidden;
   opacity: 0;
   animation: flow_up_r 600ms ease-in-out 400ms forwards;
 }
-header #register_form.flow_down {
+header #register_form.ng-leave {
   animation: flow_down_r 600ms ease-in-out forwards;
 }
 header #register_form .info {
